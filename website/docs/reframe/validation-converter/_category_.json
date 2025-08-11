@@ -1,0 +1,8 @@
+{
+  "label": "Validate Messages",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Validate and convert messages to canonical JSON format"
+  }
+}

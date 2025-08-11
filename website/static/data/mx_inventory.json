@@ -1,0 +1,898 @@
+{
+  "iso20022_mx_messages": {
+    "description": "ISO 20022 MX Message Test Scenarios Inventory",
+    "total_message_types": 14,
+    "total_scenarios": 161,
+    "message_types": {
+      "camt.025": {
+        "description": "Receipt",
+        "scenario_count": 5,
+        "scenarios": [
+          {
+            "file": "central_bank_rate_notification.json",
+            "name": "central_bank_rate_notification",
+            "display_name": "Central Bank Rate Notification"
+          },
+          {
+            "file": "deposit_rate_change.json",
+            "name": "deposit_rate_change",
+            "display_name": "Deposit Rate Change"
+          },
+          {
+            "file": "fx_rate_update.json",
+            "name": "fx_rate_update",
+            "display_name": "FX Rate Update"
+          },
+          {
+            "file": "loan_rate_adjustment.json",
+            "name": "loan_rate_adjustment",
+            "display_name": "Loan Rate Adjustment"
+          },
+          {
+            "file": "multi_product_rate_change.json",
+            "name": "multi_product_rate_change",
+            "display_name": "Multi Product Rate Change"
+          }
+        ]
+      },
+      "camt.029": {
+        "description": "Resolution of Investigation - Response to payment investigations and cancellation requests",
+        "scenario_count": 10,
+        "scenarios": [
+          {
+            "file": "answer_cancellation.json",
+            "name": "answer_cancellation",
+            "display_name": "Answer Cancellation"
+          },
+          {
+            "file": "answer_inquiry_response.json",
+            "name": "answer_inquiry_response",
+            "display_name": "Answer Inquiry Response"
+          },
+          {
+            "file": "answer_pending_investigation.json",
+            "name": "answer_pending_investigation",
+            "display_name": "Answer Pending Investigation"
+          },
+          {
+            "file": "answer_rejection.json",
+            "name": "answer_rejection",
+            "display_name": "Answer Rejection"
+          },
+          {
+            "file": "cancellation_accepted.json",
+            "name": "cancellation_accepted",
+            "display_name": "Cancellation Accepted"
+          },
+          {
+            "file": "cancellation_rejected.json",
+            "name": "cancellation_rejected",
+            "display_name": "Cancellation Rejected"
+          },
+          {
+            "file": "cbpr_cancellation_response.json",
+            "name": "cbpr_cancellation_response",
+            "display_name": "CBPR+ Cancellation Response"
+          },
+          {
+            "file": "inquiry_response.json",
+            "name": "inquiry_response",
+            "display_name": "Inquiry Response"
+          },
+          {
+            "file": "no_payment_found.json",
+            "name": "no_payment_found",
+            "display_name": "No Payment Found"
+          },
+          {
+            "file": "partial_cancellation.json",
+            "name": "partial_cancellation",
+            "display_name": "Partial Cancellation"
+          }
+        ]
+      },
+      "camt.052": {
+        "description": "Bank to Customer Account Report",
+        "scenario_count": 6,
+        "scenarios": [
+          {
+            "file": "daily_balance_report.json",
+            "name": "daily_balance_report",
+            "display_name": "Daily Balance Report"
+          },
+          {
+            "file": "intraday_liquidity_report.json",
+            "name": "intraday_liquidity_report",
+            "display_name": "Intraday Liquidity Report"
+          },
+          {
+            "file": "multi_currency_balance.json",
+            "name": "multi_currency_balance",
+            "display_name": "Multi Currency Balance"
+          },
+          {
+            "file": "negative_balance_report.json",
+            "name": "negative_balance_report",
+            "display_name": "Negative Balance Report"
+          },
+          {
+            "file": "real_time_position_update.json",
+            "name": "real_time_position_update",
+            "display_name": "Real Time Position Update"
+          },
+          {
+            "file": "treasury_cash_sweep.json",
+            "name": "treasury_cash_sweep",
+            "display_name": "Treasury Cash Sweep"
+          }
+        ]
+      },
+      "camt.053": {
+        "description": "Bank to Customer Statement - Account statements for period end reporting",
+        "scenario_count": 7,
+        "scenarios": [
+          {
+            "file": "correspondent_banking.json",
+            "name": "correspondent_banking",
+            "display_name": "Correspondent Banking"
+          },
+          {
+            "file": "daily_account_statement.json",
+            "name": "daily_account_statement",
+            "display_name": "Daily Account Statement"
+          },
+          {
+            "file": "high_volume_batch.json",
+            "name": "high_volume_batch",
+            "display_name": "High Volume Batch"
+          },
+          {
+            "file": "interim_statement_intraday.json",
+            "name": "interim_statement_intraday",
+            "display_name": "Interim Statement Intraday"
+          },
+          {
+            "file": "repeated_sequence_issues.json",
+            "name": "repeated_sequence_issues",
+            "display_name": "Repeated Sequence Issues"
+          },
+          {
+            "file": "simplified_statement.json",
+            "name": "simplified_statement",
+            "display_name": "Simplified Statement"
+          },
+          {
+            "file": "year_end_statement.json",
+            "name": "year_end_statement",
+            "display_name": "Year End Statement"
+          }
+        ]
+      },
+      "camt.054": {
+        "description": "Bank to Customer Debit/Credit Notification",
+        "scenario_count": 12,
+        "scenarios": [
+          {
+            "file": "basic_credit_confirmation.json",
+            "name": "basic_credit_confirmation",
+            "display_name": "Basic Credit Confirmation"
+          },
+          {
+            "file": "basic_debit_confirmation.json",
+            "name": "basic_debit_confirmation",
+            "display_name": "Basic Debit Confirmation"
+          },
+          {
+            "file": "cbpr_credit_confirmation.json",
+            "name": "cbpr_credit_confirmation",
+            "display_name": "CBPR+ Credit Confirmation"
+          },
+          {
+            "file": "cbpr_debit_confirmation.json",
+            "name": "cbpr_debit_confirmation",
+            "display_name": "CBPR+ Debit Confirmation"
+          },
+          {
+            "file": "direct_debit_confirmation.json",
+            "name": "direct_debit_confirmation",
+            "display_name": "Direct Debit Confirmation"
+          },
+          {
+            "file": "dividend_payment.json",
+            "name": "dividend_payment",
+            "display_name": "Dividend Payment"
+          },
+          {
+            "file": "fee_debit_confirmation.json",
+            "name": "fee_debit_confirmation",
+            "display_name": "Fee Debit Confirmation"
+          },
+          {
+            "file": "fx_transaction_debit.json",
+            "name": "fx_transaction_debit",
+            "display_name": "FX Transaction Debit"
+          },
+          {
+            "file": "incoming_wire_transfer.json",
+            "name": "incoming_wire_transfer",
+            "display_name": "Incoming Wire Transfer"
+          },
+          {
+            "file": "interest_credit.json",
+            "name": "interest_credit",
+            "display_name": "Interest Credit"
+          },
+          {
+            "file": "refund_credit.json",
+            "name": "refund_credit",
+            "display_name": "Refund Credit"
+          },
+          {
+            "file": "standing_order_debit.json",
+            "name": "standing_order_debit",
+            "display_name": "Standing Order Debit"
+          }
+        ]
+      },
+      "camt.056": {
+        "description": "FI to FI Payment Cancellation Request",
+        "scenario_count": 9,
+        "scenarios": [
+          {
+            "file": "cbpr_cancellation_request.json",
+            "name": "cbpr_cancellation_request",
+            "display_name": "CBPR+ Cancellation Request"
+          },
+          {
+            "file": "compliance_hold_cancellation.json",
+            "name": "compliance_hold_cancellation",
+            "display_name": "Compliance Hold Cancellation"
+          },
+          {
+            "file": "fi_cancellation_request.json",
+            "name": "fi_cancellation_request",
+            "display_name": "FI Cancellation Request"
+          },
+          {
+            "file": "fraud_prevention_cancellation.json",
+            "name": "fraud_prevention_cancellation",
+            "display_name": "Fraud Prevention Cancellation"
+          },
+          {
+            "file": "regulatory_compliance_cancellation.json",
+            "name": "regulatory_compliance_cancellation",
+            "display_name": "Regulatory Compliance Cancellation"
+          },
+          {
+            "file": "request_cancellation.json",
+            "name": "request_cancellation",
+            "display_name": "Request Cancellation"
+          },
+          {
+            "file": "system_error_cancellation.json",
+            "name": "system_error_cancellation",
+            "display_name": "System Error Cancellation"
+          },
+          {
+            "file": "urgent_cancellation.json",
+            "name": "urgent_cancellation",
+            "display_name": "Urgent Cancellation"
+          },
+          {
+            "file": "wrong_beneficiary_cancellation.json",
+            "name": "wrong_beneficiary_cancellation",
+            "display_name": "Wrong Beneficiary Cancellation"
+          }
+        ]
+      },
+      "camt.057": {
+        "description": "Notification to Receive",
+        "scenario_count": 4,
+        "scenarios": [
+          {
+            "file": "expected_incoming_funds.json",
+            "name": "expected_incoming_funds",
+            "display_name": "Expected Incoming Funds"
+          },
+          {
+            "file": "fx_settlement_notice.json",
+            "name": "fx_settlement_notice",
+            "display_name": "FX Settlement Notice"
+          },
+          {
+            "file": "securities_settlement_notice.json",
+            "name": "securities_settlement_notice",
+            "display_name": "Securities Settlement Notice"
+          },
+          {
+            "file": "single_payment_notice.json",
+            "name": "single_payment_notice",
+            "display_name": "Single Payment Notice"
+          }
+        ]
+      },
+      "camt.060": {
+        "description": "Account Reporting Request",
+        "scenario_count": 3,
+        "scenarios": [
+          {
+            "file": "interim_report_request.json",
+            "name": "interim_report_request",
+            "display_name": "Interim Report Request"
+          },
+          {
+            "file": "multi_account_request.json",
+            "name": "multi_account_request",
+            "display_name": "Multi Account Request"
+          },
+          {
+            "file": "statement_request_basic.json",
+            "name": "statement_request_basic",
+            "display_name": "Statement Request Basic"
+          }
+        ]
+      },
+      "pacs.002": {
+        "description": "Payment Status Report",
+        "scenario_count": 10,
+        "scenarios": [
+          {
+            "file": "cheque_collection_advice.json",
+            "name": "cheque_collection_advice",
+            "display_name": "Cheque Collection Advice"
+          },
+          {
+            "file": "duplicate_cheque_stop.json",
+            "name": "duplicate_cheque_stop",
+            "display_name": "Duplicate Cheque Stop"
+          },
+          {
+            "file": "foreign_cheque_collection.json",
+            "name": "foreign_cheque_collection",
+            "display_name": "Foreign Cheque Collection"
+          },
+          {
+            "file": "fraud_prevention_stop.json",
+            "name": "fraud_prevention_stop",
+            "display_name": "Fraud Prevention Stop"
+          },
+          {
+            "file": "lost_cheque_stop.json",
+            "name": "lost_cheque_stop",
+            "display_name": "Lost Cheque Stop"
+          },
+          {
+            "file": "returned_cheque_advice.json",
+            "name": "returned_cheque_advice",
+            "display_name": "Returned Cheque Advice"
+          },
+          {
+            "file": "single_cheque_advice.json",
+            "name": "single_cheque_advice",
+            "display_name": "Single Cheque Advice"
+          },
+          {
+            "file": "stop_payment_accepted.json",
+            "name": "stop_payment_accepted",
+            "display_name": "Stop Payment Accepted"
+          },
+          {
+            "file": "stop_payment_pending.json",
+            "name": "stop_payment_pending",
+            "display_name": "Stop Payment Pending"
+          },
+          {
+            "file": "stop_payment_rejected.json",
+            "name": "stop_payment_rejected",
+            "display_name": "Stop Payment Rejected"
+          }
+        ]
+      },
+      "pacs.003": {
+        "description": "FI to FI Customer Direct Debit - Scenarios mapped from MT104",
+        "scenario_count": 8,
+        "scenarios": [
+          {
+            "file": "cbpr_insurance_collection.json",
+            "name": "cbpr_insurance_collection",
+            "display_name": "CBPR+ Insurance Collection"
+          },
+          {
+            "file": "cbpr_subscription_collection.json",
+            "name": "cbpr_subscription_collection",
+            "display_name": "CBPR+ Subscription Collection"
+          },
+          {
+            "file": "cbpr_utility_collection.json",
+            "name": "cbpr_utility_collection",
+            "display_name": "CBPR+ Utility Collection"
+          },
+          {
+            "file": "fi_direct_debit_basic.json",
+            "name": "fi_direct_debit_basic",
+            "display_name": "FI Direct Debit Basic"
+          },
+          {
+            "file": "fi_direct_debit_cbpr.json",
+            "name": "fi_direct_debit_cbpr",
+            "display_name": "FI Direct Debit CBPR+"
+          },
+          {
+            "file": "fi_direct_debit_multiple.json",
+            "name": "fi_direct_debit_multiple",
+            "display_name": "FI Direct Debit Multiple"
+          },
+          {
+            "file": "fi_direct_debit_recurring.json",
+            "name": "fi_direct_debit_recurring",
+            "display_name": "FI Direct Debit Recurring"
+          },
+          {
+            "file": "fi_direct_debit_return.json",
+            "name": "fi_direct_debit_return",
+            "display_name": "FI Direct Debit Return"
+          }
+        ]
+      },
+      "pacs.008": {
+        "description": "FI to FI Customer Credit Transfer",
+        "scenario_count": 54,
+        "scenarios": [
+          {
+            "file": "cbpr_business_payment.json",
+            "name": "cbpr_business_payment",
+            "display_name": "CBPR+ Business Payment"
+          },
+          {
+            "file": "cbpr_charity_donation.json",
+            "name": "cbpr_charity_donation",
+            "display_name": "CBPR+ Charity Donation"
+          },
+          {
+            "file": "cbpr_commission_payment.json",
+            "name": "cbpr_commission_payment",
+            "display_name": "CBPR+ Commission Payment"
+          },
+          {
+            "file": "cbpr_crypto_settlement.json",
+            "name": "cbpr_crypto_settlement",
+            "display_name": "CBPR+ Crypto Settlement"
+          },
+          {
+            "file": "cbpr_dividend_distribution.json",
+            "name": "cbpr_dividend_distribution",
+            "display_name": "CBPR+ Dividend Distribution"
+          },
+          {
+            "file": "cbpr_dividend_payment.json",
+            "name": "cbpr_dividend_payment",
+            "display_name": "CBPR+ Dividend Payment"
+          },
+          {
+            "file": "cbpr_ecommerce_b2c.json",
+            "name": "cbpr_ecommerce_b2c",
+            "display_name": "CBPR+ Ecommerce B2C"
+          },
+          {
+            "file": "cbpr_education_international.json",
+            "name": "cbpr_education_international",
+            "display_name": "CBPR+ Education International"
+          },
+          {
+            "file": "cbpr_education_payment.json",
+            "name": "cbpr_education_payment",
+            "display_name": "CBPR+ Education Payment"
+          },
+          {
+            "file": "cbpr_fees_payment.json",
+            "name": "cbpr_fees_payment",
+            "display_name": "CBPR+ Fees Payment"
+          },
+          {
+            "file": "cbpr_gig_economy.json",
+            "name": "cbpr_gig_economy",
+            "display_name": "CBPR+ Gig Economy"
+          },
+          {
+            "file": "cbpr_government_disbursement.json",
+            "name": "cbpr_government_disbursement",
+            "display_name": "CBPR+ Government Disbursement"
+          },
+          {
+            "file": "cbpr_healthcare_payment.json",
+            "name": "cbpr_healthcare_payment",
+            "display_name": "CBPR+ Healthcare Payment"
+          },
+          {
+            "file": "cbpr_insurance_cross_border.json",
+            "name": "cbpr_insurance_cross_border",
+            "display_name": "CBPR+ Insurance Cross Border"
+          },
+          {
+            "file": "cbpr_insurance_payment.json",
+            "name": "cbpr_insurance_payment",
+            "display_name": "CBPR+ Insurance Payment"
+          },
+          {
+            "file": "cbpr_interest_payment.json",
+            "name": "cbpr_interest_payment",
+            "display_name": "CBPR+ Interest Payment"
+          },
+          {
+            "file": "cbpr_investment_payment.json",
+            "name": "cbpr_investment_payment",
+            "display_name": "CBPR+ Investment Payment"
+          },
+          {
+            "file": "cbpr_loan_disbursement.json",
+            "name": "cbpr_loan_disbursement",
+            "display_name": "CBPR+ Loan Disbursement"
+          },
+          {
+            "file": "cbpr_pension_payment.json",
+            "name": "cbpr_pension_payment",
+            "display_name": "CBPR+ Pension Payment"
+          },
+          {
+            "file": "cbpr_person_to_person.json",
+            "name": "cbpr_person_to_person",
+            "display_name": "CBPR+ Person To Person"
+          },
+          {
+            "file": "cbpr_real_estate.json",
+            "name": "cbpr_real_estate",
+            "display_name": "CBPR+ Real Estate"
+          },
+          {
+            "file": "cbpr_remittance_corridor.json",
+            "name": "cbpr_remittance_corridor",
+            "display_name": "CBPR+ Remittance Corridor"
+          },
+          {
+            "file": "cbpr_rent_payment.json",
+            "name": "cbpr_rent_payment",
+            "display_name": "CBPR+ Rent Payment"
+          },
+          {
+            "file": "cbpr_royalty_payment.json",
+            "name": "cbpr_royalty_payment",
+            "display_name": "CBPR+ Royalty Payment"
+          },
+          {
+            "file": "cbpr_salary_payment.json",
+            "name": "cbpr_salary_payment",
+            "display_name": "CBPR+ Salary Payment"
+          },
+          {
+            "file": "cbpr_sanctions_failure.json",
+            "name": "cbpr_sanctions_failure",
+            "display_name": "CBPR+ Sanctions Failure"
+          },
+          {
+            "file": "cbpr_social_security.json",
+            "name": "cbpr_social_security",
+            "display_name": "CBPR+ Social Security"
+          },
+          {
+            "file": "cbpr_stp_compliant.json",
+            "name": "cbpr_stp_compliant",
+            "display_name": "CBPR+ STP Compliant"
+          },
+          {
+            "file": "cbpr_stp_enhanced.json",
+            "name": "cbpr_stp_enhanced",
+            "display_name": "CBPR+ STP Enhanced"
+          },
+          {
+            "file": "cbpr_subscription_saas.json",
+            "name": "cbpr_subscription_saas",
+            "display_name": "CBPR+ Subscription SaaS"
+          },
+          {
+            "file": "cbpr_supplier_payment.json",
+            "name": "cbpr_supplier_payment",
+            "display_name": "CBPR+ Supplier Payment"
+          },
+          {
+            "file": "cbpr_tax_payment.json",
+            "name": "cbpr_tax_payment",
+            "display_name": "CBPR+ Tax Payment"
+          },
+          {
+            "file": "cbpr_trade_finance.json",
+            "name": "cbpr_trade_finance",
+            "display_name": "CBPR+ Trade Finance"
+          },
+          {
+            "file": "cbpr_treasury_intercompany.json",
+            "name": "cbpr_treasury_intercompany",
+            "display_name": "CBPR+ Treasury Intercompany"
+          },
+          {
+            "file": "cbpr_utility_cross_border.json",
+            "name": "cbpr_utility_cross_border",
+            "display_name": "CBPR+ Utility Cross Border"
+          },
+          {
+            "file": "cbpr_utility_payment.json",
+            "name": "cbpr_utility_payment",
+            "display_name": "CBPR+ Utility Payment"
+          },
+          {
+            "file": "correspondent_banking.json",
+            "name": "correspondent_banking",
+            "display_name": "Correspondent Banking"
+          },
+          {
+            "file": "cover_payment.json",
+            "name": "cover_payment",
+            "display_name": "Cover Payment"
+          },
+          {
+            "file": "duplicate_uetr.json",
+            "name": "duplicate_uetr",
+            "display_name": "Duplicate UETR"
+          },
+          {
+            "file": "fx_conversion.json",
+            "name": "fx_conversion",
+            "display_name": "FX Conversion"
+          },
+          {
+            "file": "high_value.json",
+            "name": "high_value",
+            "display_name": "High Value"
+          },
+          {
+            "file": "minimal.json",
+            "name": "minimal",
+            "display_name": "Minimal"
+          },
+          {
+            "file": "missing_lei_entity.json",
+            "name": "missing_lei_entity",
+            "display_name": "Missing LEI Entity"
+          },
+          {
+            "file": "regulatory_compliant.json",
+            "name": "regulatory_compliant",
+            "display_name": "Regulatory Compliant"
+          },
+          {
+            "file": "regulatory_test.json",
+            "name": "regulatory_test",
+            "display_name": "Regulatory Test"
+          },
+          {
+            "file": "rejection.json",
+            "name": "rejection",
+            "display_name": "Rejection"
+          },
+          {
+            "file": "remit_basic.json",
+            "name": "remit_basic",
+            "display_name": "Remit Basic"
+          },
+          {
+            "file": "remit_structured.json",
+            "name": "remit_structured",
+            "display_name": "Remit Structured"
+          },
+          {
+            "file": "remittance_enhanced.json",
+            "name": "remittance_enhanced",
+            "display_name": "Remittance Enhanced"
+          },
+          {
+            "file": "return.json",
+            "name": "return",
+            "display_name": "Return"
+          },
+          {
+            "file": "standard.json",
+            "name": "standard",
+            "display_name": "Standard"
+          },
+          {
+            "file": "stp.json",
+            "name": "stp",
+            "display_name": "STP"
+          },
+          {
+            "file": "treasury_payment.json",
+            "name": "treasury_payment",
+            "display_name": "Treasury Payment"
+          },
+          {
+            "file": "unresolved_intermediary.json",
+            "name": "unresolved_intermediary",
+            "display_name": "Unresolved Intermediary"
+          }
+        ]
+      },
+      "pacs.009": {
+        "description": "FI to FI Financial Institution Credit Transfer",
+        "scenario_count": 18,
+        "scenarios": [
+          {
+            "file": "bank_transfer_cover.json",
+            "name": "bank_transfer_cover",
+            "display_name": "Bank Transfer Cover"
+          },
+          {
+            "file": "bank_transfer_non_cover.json",
+            "name": "bank_transfer_non_cover",
+            "display_name": "Bank Transfer Non Cover"
+          },
+          {
+            "file": "cbpr_cov_complex_routing.json",
+            "name": "cbpr_cov_complex_routing",
+            "display_name": "CBPR+ COV Complex Routing"
+          },
+          {
+            "file": "cbpr_cov_compliance_enhanced.json",
+            "name": "cbpr_cov_compliance_enhanced",
+            "display_name": "CBPR+ COV Compliance Enhanced"
+          },
+          {
+            "file": "cbpr_cov_rejection.json",
+            "name": "cbpr_cov_rejection",
+            "display_name": "CBPR+ COV Rejection"
+          },
+          {
+            "file": "cbpr_cov_return.json",
+            "name": "cbpr_cov_return",
+            "display_name": "CBPR+ COV Return"
+          },
+          {
+            "file": "cbpr_cov_standard.json",
+            "name": "cbpr_cov_standard",
+            "display_name": "CBPR+ COV Standard"
+          },
+          {
+            "file": "cbpr_serial_payment.json",
+            "name": "cbpr_serial_payment",
+            "display_name": "CBPR+ Serial Payment"
+          },
+          {
+            "file": "cov_mismatch.json",
+            "name": "cov_mismatch",
+            "display_name": "COV Mismatch"
+          },
+          {
+            "file": "fi_to_fi_transparency.json",
+            "name": "fi_to_fi_transparency",
+            "display_name": "FI To FI Transparency"
+          },
+          {
+            "file": "minimal_return.json",
+            "name": "minimal_return",
+            "display_name": "Minimal Return"
+          },
+          {
+            "file": "regulatory_reporting.json",
+            "name": "regulatory_reporting",
+            "display_name": "Regulatory Reporting"
+          },
+          {
+            "file": "rejection_payment.json",
+            "name": "rejection_payment",
+            "display_name": "Rejection Payment"
+          },
+          {
+            "file": "return.json",
+            "name": "return",
+            "display_name": "Return"
+          },
+          {
+            "file": "return_payment.json",
+            "name": "return_payment",
+            "display_name": "Return Payment"
+          },
+          {
+            "file": "return_simple.json",
+            "name": "return_simple",
+            "display_name": "Return Simple"
+          },
+          {
+            "file": "standard.json",
+            "name": "standard",
+            "display_name": "Standard"
+          },
+          {
+            "file": "urgent_liquidity_transfer.json",
+            "name": "urgent_liquidity_transfer",
+            "display_name": "Urgent Liquidity Transfer"
+          }
+        ]
+      },
+      "pain.001": {
+        "description": "Customer Credit Transfer Initiation",
+        "scenario_count": 11,
+        "scenarios": [
+          {
+            "file": "bulk_payment.json",
+            "name": "bulk_payment",
+            "display_name": "Bulk Payment"
+          },
+          {
+            "file": "cbpr_corporate_bulk.json",
+            "name": "cbpr_corporate_bulk",
+            "display_name": "CBPR+ Corporate Bulk"
+          },
+          {
+            "file": "cbpr_payroll.json",
+            "name": "cbpr_payroll",
+            "display_name": "CBPR+ Payroll"
+          },
+          {
+            "file": "cbpr_supplier_batch.json",
+            "name": "cbpr_supplier_batch",
+            "display_name": "CBPR+ Supplier Batch"
+          },
+          {
+            "file": "minimal.json",
+            "name": "minimal",
+            "display_name": "Minimal"
+          },
+          {
+            "file": "multi_currency.json",
+            "name": "multi_currency",
+            "display_name": "Multi Currency"
+          },
+          {
+            "file": "salary_payment.json",
+            "name": "salary_payment",
+            "display_name": "Salary Payment"
+          },
+          {
+            "file": "scheduled_payment.json",
+            "name": "scheduled_payment",
+            "display_name": "Scheduled Payment"
+          },
+          {
+            "file": "standard.json",
+            "name": "standard",
+            "display_name": "Standard"
+          },
+          {
+            "file": "urgent_payment.json",
+            "name": "urgent_payment",
+            "display_name": "Urgent Payment"
+          },
+          {
+            "file": "vendor_payment.json",
+            "name": "vendor_payment",
+            "display_name": "Vendor Payment"
+          }
+        ]
+      },
+      "pain.008": {
+        "description": "Customer Direct Debit Initiation - Scenarios mapped from MT107",
+        "scenario_count": 4,
+        "scenarios": [
+          {
+            "file": "authorized_bulk_collection.json",
+            "name": "authorized_bulk_collection",
+            "display_name": "Authorized Bulk Collection"
+          },
+          {
+            "file": "general_direct_debit_basic.json",
+            "name": "general_direct_debit_basic",
+            "display_name": "General Direct Debit Basic"
+          },
+          {
+            "file": "return_processing.json",
+            "name": "return_processing",
+            "display_name": "Return Processing"
+          },
+          {
+            "file": "unauthorized_debit_processing.json",
+            "name": "unauthorized_debit_processing",
+            "display_name": "Unauthorized Debit Processing"
+          }
+        ]
+      }
+    }
+  }
+}

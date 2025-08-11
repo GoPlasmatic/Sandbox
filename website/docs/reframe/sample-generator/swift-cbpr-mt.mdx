@@ -1,0 +1,61 @@
+---
+sidebar_position: 1
+---
+
+import SwiftMTGeneratorWrapper from '@site/src/components/SampleGenerator/SwiftMTGeneratorWrapper';
+
+# Swift CBPR+ MT Message Generator
+
+<SwiftMTGeneratorWrapper />
+
+---
+
+## About This Generator
+
+### Overview
+
+The Swift CBPR+ MT Message sample generator provides a powerful and flexible way to create realistic test messages for various payment scenarios. The generator leverages predefined scenario configurations that encapsulate business rules, field mappings, and validation logic specific to each message type and use case. These scenario configs are implemented as JSON-based templates that define the structure, mandatory fields, optional fields, and business logic for generating compliant Swift MT messages according to CBPR+ standards.
+
+### How It Works
+
+The sample generator uses a sophisticated scenario configuration system where each message type (MT103, MT202, etc.) has multiple predefined scenarios representing real-world use cases. When you select a message type and scenario, the generator:
+
+1. Loads the corresponding scenario configuration from the backend
+2. Applies the business rules and field mappings defined in the config
+3. Generates appropriate test data for variable fields
+4. Validates the message structure against CBPR+ standards
+5. Returns a fully-formed, compliant Swift MT message
+
+### Configuration
+
+The API endpoint can be configured through environment variables:
+- **Development**: `http://localhost:3000/generate/sample`
+- **Production**: Update the configuration in `src/config/api.ts`
+
+### Supported Message Types
+
+The generator currently supports the following Swift MT message types:
+- **MT101** - Request for Transfer
+- **MT103** - Single Customer Credit Transfer
+- **MT104** - Direct Debit and Request for Debit Transfer
+- **MT107** - General Direct Debit Message
+- **MT110** - Advice of Cheque(s)
+- **MT111** - Stop Payment of a Cheque
+- **MT112** - Status of Request for Stop Payment
+- **MT192** - Request for Cancellation
+- **MT196** - Answers
+- **MT199** - Free Format Message
+- **MT202** - General Financial Institution Transfer
+- **MT205** - Financial Institution Transfer Execution
+- **MT210** - Notice to Receive
+- **MT292** - Request for Cancellation
+- **MT296** - Answers
+- **MT299** - Free Format Message for Financial Institutions
+- **MT900** - Confirmation of Debit
+- **MT910** - Confirmation of Credit
+- **MT920** - Request Message
+- **MT935** - Rate Change Advice
+- **MT940** - Customer Statement Message
+- **MT941** - Balance Report
+- **MT942** - Interim Transaction Report
+- **MT950** - Statement Message

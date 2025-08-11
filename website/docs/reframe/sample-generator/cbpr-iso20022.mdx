@@ -1,0 +1,60 @@
+---
+sidebar_position: 2
+---
+
+import ISO20022GeneratorWrapper from '@site/src/components/SampleGenerator/ISO20022GeneratorWrapper';
+
+# CBPR+ ISO20022 Message Generator
+
+<ISO20022GeneratorWrapper />
+
+---
+
+## About This Generator
+
+### Overview
+
+The CBPR+ ISO20022 Message sample generator provides a comprehensive solution for creating standards-compliant XML messages for testing and development purposes. The generator implements sophisticated scenario configurations that ensure messages conform to the latest ISO20022 standards and CBPR+ guidelines. Each scenario configuration is built using extensible JSON templates that define message schemas, business validation rules, mandatory elements, and conditional logic based on specific use cases and jurisdictional requirements.
+
+### How It Works
+
+The ISO20022 sample generator utilizes a multi-layered configuration approach where each message type (pacs.008, pain.001, etc.) supports various real-world scenarios. The generation process follows these steps:
+
+1. Retrieves the appropriate scenario configuration based on selected message type
+2. Constructs the XML message structure according to ISO20022 schemas
+3. Populates fields with realistic test data following CBPR+ requirements
+4. Applies business rules and conditional logic from the scenario config
+5. Validates the complete message against XSD schemas and business rules
+6. Returns a well-formed, valid ISO20022 XML message
+
+### Configuration
+
+The API endpoint can be configured through environment variables:
+- **Development**: `http://localhost:3000/generate/sample`
+- **Production**: Update the configuration in `src/config/api.ts`
+
+### Supported Message Types
+
+The generator currently supports the following ISO20022 message types:
+- **pacs.002** - FIToFI Payment Status Report
+- **pacs.003** - FIToFI Customer Direct Debit
+- **pacs.008** - FIToFI Customer Credit Transfer
+- **pacs.009** - Financial Institution Credit Transfer
+- **pain.001** - Customer Credit Transfer Initiation
+- **pain.008** - Customer Direct Debit Initiation
+- **camt.025** - Receipt
+- **camt.029** - Resolution of Investigation
+- **camt.052** - Bank to Customer Account Report
+- **camt.053** - Bank to Customer Statement
+- **camt.054** - Bank to Customer Debit/Credit Notification
+- **camt.056** - FIToFI Payment Cancellation Request
+- **camt.057** - Notification to Account Owner
+- **camt.060** - Account Reporting Request
+
+### Features
+
+- **XML Syntax Highlighting**: Generated messages are displayed with proper XML syntax highlighting for better readability
+- **Copy to Clipboard**: One-click copy functionality for easy message export
+- **API Transparency**: View the exact API request and response for debugging and integration purposes
+- **Scenario-based Generation**: Multiple realistic scenarios per message type
+- **CBPR+ Compliance**: All generated messages comply with CBPR+ standards and requirements

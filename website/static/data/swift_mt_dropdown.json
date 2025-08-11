@@ -1,0 +1,852 @@
+{
+  "messageTypes": [
+    {
+      "value": "MT101",
+      "label": "MT101",
+      "description": "Request for Transfer"
+    },
+    {
+      "value": "MT103",
+      "label": "MT103",
+      "description": "Single Customer Credit Transfer"
+    },
+    {
+      "value": "MT104",
+      "label": "MT104",
+      "description": "Direct Debit and Request for Debit Transfer"
+    },
+    {
+      "value": "MT107",
+      "label": "MT107",
+      "description": "General Direct Debit"
+    },
+    {
+      "value": "MT110",
+      "label": "MT110",
+      "description": "Advice of Cheque(s)"
+    },
+    {
+      "value": "MT111",
+      "label": "MT111",
+      "description": "Stop Cheque"
+    },
+    {
+      "value": "MT112",
+      "label": "MT112",
+      "description": "Status of a Request for Stop Payment of a Cheque"
+    },
+    {
+      "value": "MT192",
+      "label": "MT192",
+      "description": "Request for Cancellation"
+    },
+    {
+      "value": "MT196",
+      "label": "MT196",
+      "description": "Answers"
+    },
+    {
+      "value": "MT199",
+      "label": "MT199",
+      "description": "Free Format Message"
+    },
+    {
+      "value": "MT202",
+      "label": "MT202",
+      "description": "General Financial Institution Transfer"
+    },
+    {
+      "value": "MT205",
+      "label": "MT205",
+      "description": "Financial Institution Transfer Execution"
+    },
+    {
+      "value": "MT210",
+      "label": "MT210",
+      "description": "Notice to Receive"
+    },
+    {
+      "value": "MT292",
+      "label": "MT292",
+      "description": "Request for Cancellation"
+    },
+    {
+      "value": "MT296",
+      "label": "MT296",
+      "description": "Answers"
+    },
+    {
+      "value": "MT299",
+      "label": "MT299",
+      "description": "Free Format Message"
+    },
+    {
+      "value": "MT900",
+      "label": "MT900",
+      "description": "Confirmation of Debit"
+    },
+    {
+      "value": "MT910",
+      "label": "MT910",
+      "description": "Confirmation of Credit"
+    },
+    {
+      "value": "MT920",
+      "label": "MT920",
+      "description": "Request Message"
+    },
+    {
+      "value": "MT935",
+      "label": "MT935",
+      "description": "Rate Change Advice"
+    },
+    {
+      "value": "MT940",
+      "label": "MT940",
+      "description": "Customer Statement Message"
+    },
+    {
+      "value": "MT941",
+      "label": "MT941",
+      "description": "Balance Report"
+    },
+    {
+      "value": "MT942",
+      "label": "MT942",
+      "description": "Interim Transaction Report"
+    },
+    {
+      "value": "MT950",
+      "label": "MT950",
+      "description": "Statement Message"
+    }
+  ],
+  "scenariosByType": {
+    "MT101": [
+      {
+        "value": "bulk_payment",
+        "label": "Bulk Payment"
+      },
+      {
+        "value": "cbpr_corporate_bulk_payment",
+        "label": "CBPR+ Corporate Bulk Payment"
+      },
+      {
+        "value": "cbpr_payroll_batch",
+        "label": "CBPR+ Payroll Batch"
+      },
+      {
+        "value": "cbpr_supplier_batch",
+        "label": "CBPR+ Supplier Batch"
+      },
+      {
+        "value": "direct_debit",
+        "label": "Direct Debit"
+      },
+      {
+        "value": "minimal",
+        "label": "Minimal"
+      },
+      {
+        "value": "multi_currency",
+        "label": "Multi Currency"
+      },
+      {
+        "value": "salary_payment",
+        "label": "Salary Payment"
+      },
+      {
+        "value": "scheduled_payment",
+        "label": "Scheduled Payment"
+      },
+      {
+        "value": "standard",
+        "label": "Standard"
+      },
+      {
+        "value": "urgent_payment",
+        "label": "Urgent Payment"
+      },
+      {
+        "value": "vendor_payment",
+        "label": "Vendor Payment"
+      }
+    ],
+    "MT103": [
+      {
+        "value": "cbpr_business_payment",
+        "label": "CBPR+ Business Payment"
+      },
+      {
+        "value": "cbpr_charity_donation",
+        "label": "CBPR+ Charity Donation"
+      },
+      {
+        "value": "cbpr_commission_payment",
+        "label": "CBPR+ Commission Payment"
+      },
+      {
+        "value": "cbpr_crypto_settlement",
+        "label": "CBPR+ Crypto Settlement"
+      },
+      {
+        "value": "cbpr_dividend_distribution",
+        "label": "CBPR+ Dividend Distribution"
+      },
+      {
+        "value": "cbpr_dividend_payment",
+        "label": "CBPR+ Dividend Payment"
+      },
+      {
+        "value": "cbpr_ecommerce_b2c",
+        "label": "CBPR+ Ecommerce B2C"
+      },
+      {
+        "value": "cbpr_education_international",
+        "label": "CBPR+ Education International"
+      },
+      {
+        "value": "cbpr_education_payment",
+        "label": "CBPR+ Education Payment"
+      },
+      {
+        "value": "cbpr_fees_payment",
+        "label": "CBPR+ Fees Payment"
+      },
+      {
+        "value": "cbpr_gig_economy",
+        "label": "CBPR+ Gig Economy"
+      },
+      {
+        "value": "cbpr_government_disbursement",
+        "label": "CBPR+ Government Disbursement"
+      },
+      {
+        "value": "cbpr_healthcare_payment",
+        "label": "CBPR+ Healthcare Payment"
+      },
+      {
+        "value": "cbpr_insurance_cross_border",
+        "label": "CBPR+ Insurance Cross Border"
+      },
+      {
+        "value": "cbpr_insurance_payment",
+        "label": "CBPR+ Insurance Payment"
+      },
+      {
+        "value": "cbpr_interest_payment",
+        "label": "CBPR+ Interest Payment"
+      },
+      {
+        "value": "cbpr_investment_payment",
+        "label": "CBPR+ Investment Payment"
+      },
+      {
+        "value": "cbpr_loan_disbursement",
+        "label": "CBPR+ Loan Disbursement"
+      },
+      {
+        "value": "cbpr_pension_payment",
+        "label": "CBPR+ Pension Payment"
+      },
+      {
+        "value": "cbpr_person_to_person",
+        "label": "CBPR+ Person To Person"
+      },
+      {
+        "value": "cbpr_real_estate",
+        "label": "CBPR+ Real Estate"
+      },
+      {
+        "value": "cbpr_remittance_corridor",
+        "label": "CBPR+ Remittance Corridor"
+      },
+      {
+        "value": "cbpr_rent_payment",
+        "label": "CBPR+ Rent Payment"
+      },
+      {
+        "value": "cbpr_royalty_payment",
+        "label": "CBPR+ Royalty Payment"
+      },
+      {
+        "value": "cbpr_salary_payment",
+        "label": "CBPR+ Salary Payment"
+      },
+      {
+        "value": "cbpr_sanctions_failure",
+        "label": "CBPR+ Sanctions Failure"
+      },
+      {
+        "value": "cbpr_social_security",
+        "label": "CBPR+ Social Security"
+      },
+      {
+        "value": "cbpr_stp_compliant",
+        "label": "CBPR+ STP Compliant"
+      },
+      {
+        "value": "cbpr_stp_enhanced",
+        "label": "CBPR+ STP Enhanced"
+      },
+      {
+        "value": "cbpr_subscription_saas",
+        "label": "CBPR+ Subscription SaaS"
+      },
+      {
+        "value": "cbpr_supplier_payment",
+        "label": "CBPR+ Supplier Payment"
+      },
+      {
+        "value": "cbpr_tax_payment",
+        "label": "CBPR+ Tax Payment"
+      },
+      {
+        "value": "cbpr_trade_finance",
+        "label": "CBPR+ Trade Finance"
+      },
+      {
+        "value": "cbpr_treasury_intercompany",
+        "label": "CBPR+ Treasury Intercompany"
+      },
+      {
+        "value": "cbpr_utility_cross_border",
+        "label": "CBPR+ Utility Cross Border"
+      },
+      {
+        "value": "cbpr_utility_payment",
+        "label": "CBPR+ Utility Payment"
+      },
+      {
+        "value": "cbpr_validation_failure",
+        "label": "CBPR+ Validation Failure"
+      },
+      {
+        "value": "correspondent_banking",
+        "label": "Correspondent Banking"
+      },
+      {
+        "value": "cover_payment",
+        "label": "Cover Payment"
+      },
+      {
+        "value": "duplicate_uetr",
+        "label": "Duplicate UETR"
+      },
+      {
+        "value": "fx_conversion",
+        "label": "FX Conversion"
+      },
+      {
+        "value": "high_value",
+        "label": "High Value"
+      },
+      {
+        "value": "invalid_purpose_code",
+        "label": "Invalid Purpose Code"
+      },
+      {
+        "value": "minimal",
+        "label": "Minimal"
+      },
+      {
+        "value": "missing_lei_entity",
+        "label": "Missing LEI Entity"
+      },
+      {
+        "value": "regulatory_compliant",
+        "label": "Regulatory Compliant"
+      },
+      {
+        "value": "rejection",
+        "label": "Rejection"
+      },
+      {
+        "value": "remit_basic",
+        "label": "Remit Basic"
+      },
+      {
+        "value": "remit_structured",
+        "label": "Remit Structured"
+      },
+      {
+        "value": "remittance_enhanced",
+        "label": "Remittance Enhanced"
+      },
+      {
+        "value": "return",
+        "label": "Return"
+      },
+      {
+        "value": "standard",
+        "label": "Standard"
+      },
+      {
+        "value": "stp",
+        "label": "STP"
+      },
+      {
+        "value": "treasury_payment",
+        "label": "Treasury Payment"
+      },
+      {
+        "value": "unresolved_intermediary",
+        "label": "Unresolved Intermediary"
+      }
+    ],
+    "MT104": [
+      {
+        "value": "cbpr_insurance_collection",
+        "label": "CBPR+ Insurance Collection"
+      },
+      {
+        "value": "cbpr_subscription_collection",
+        "label": "CBPR+ Subscription Collection"
+      },
+      {
+        "value": "cbpr_utility_collection",
+        "label": "CBPR+ Utility Collection"
+      },
+      {
+        "value": "fi_direct_debit_basic",
+        "label": "FI Direct Debit Basic"
+      },
+      {
+        "value": "fi_direct_debit_cbpr",
+        "label": "FI Direct Debit CBPR+"
+      },
+      {
+        "value": "fi_direct_debit_multiple",
+        "label": "FI Direct Debit Multiple"
+      },
+      {
+        "value": "fi_direct_debit_recurring",
+        "label": "FI Direct Debit Recurring"
+      },
+      {
+        "value": "fi_direct_debit_return",
+        "label": "FI Direct Debit Return"
+      }
+    ],
+    "MT107": [
+      {
+        "value": "authorized_bulk_collection",
+        "label": "Authorized Bulk Collection"
+      },
+      {
+        "value": "general_direct_debit_basic",
+        "label": "General Direct Debit Basic"
+      },
+      {
+        "value": "return_processing",
+        "label": "Return Processing"
+      },
+      {
+        "value": "unauthorized_debit_processing",
+        "label": "Unauthorized Debit Processing"
+      }
+    ],
+    "MT110": [
+      {
+        "value": "cheque_collection_advice",
+        "label": "Cheque Collection Advice"
+      },
+      {
+        "value": "foreign_cheque_collection",
+        "label": "Foreign Cheque Collection"
+      },
+      {
+        "value": "returned_cheque_advice",
+        "label": "Returned Cheque Advice"
+      },
+      {
+        "value": "single_cheque_advice",
+        "label": "Single Cheque Advice"
+      }
+    ],
+    "MT111": [
+      {
+        "value": "duplicate_cheque_stop",
+        "label": "Duplicate Cheque Stop"
+      },
+      {
+        "value": "fraud_prevention_stop",
+        "label": "Fraud Prevention Stop"
+      },
+      {
+        "value": "lost_cheque_stop",
+        "label": "Lost Cheque Stop"
+      }
+    ],
+    "MT112": [
+      {
+        "value": "stop_payment_accepted",
+        "label": "Stop Payment Accepted"
+      },
+      {
+        "value": "stop_payment_pending",
+        "label": "Stop Payment Pending"
+      },
+      {
+        "value": "stop_payment_rejected",
+        "label": "Stop Payment Rejected"
+      }
+    ],
+    "MT192": [
+      {
+        "value": "cbpr_cancellation_request",
+        "label": "CBPR+ Cancellation Request"
+      },
+      {
+        "value": "fraud_prevention_cancellation",
+        "label": "Fraud Prevention Cancellation"
+      },
+      {
+        "value": "regulatory_compliance_cancellation",
+        "label": "Regulatory Compliance Cancellation"
+      },
+      {
+        "value": "request_cancellation",
+        "label": "Request Cancellation"
+      },
+      {
+        "value": "urgent_cancellation_mt202",
+        "label": "Urgent Cancellation MT202"
+      }
+    ],
+    "MT196": [
+      {
+        "value": "answer_cancellation",
+        "label": "Answer Cancellation"
+      },
+      {
+        "value": "answer_inquiry_response",
+        "label": "Answer Inquiry Response"
+      },
+      {
+        "value": "answer_pending_investigation",
+        "label": "Answer Pending Investigation"
+      },
+      {
+        "value": "answer_rejection",
+        "label": "Answer Rejection"
+      },
+      {
+        "value": "cbpr_cancellation_response",
+        "label": "CBPR+ Cancellation Response"
+      }
+    ],
+    "MT199": [
+      {
+        "value": "cbpr_cancellation",
+        "label": "CBPR+ Cancellation"
+      },
+      {
+        "value": "cbpr_inquiry",
+        "label": "CBPR+ Inquiry"
+      }
+    ],
+    "MT202": [
+      {
+        "value": "cbpr_cov_complex_routing",
+        "label": "CBPR+ COV Complex Routing"
+      },
+      {
+        "value": "cbpr_cov_compliance_enhanced",
+        "label": "CBPR+ COV Compliance Enhanced"
+      },
+      {
+        "value": "cbpr_cov_rejection",
+        "label": "CBPR+ COV Rejection"
+      },
+      {
+        "value": "cbpr_cov_return",
+        "label": "CBPR+ COV Return"
+      },
+      {
+        "value": "cbpr_cov_standard",
+        "label": "CBPR+ COV Standard"
+      },
+      {
+        "value": "cbpr_serial_payment",
+        "label": "CBPR+ Serial Payment"
+      },
+      {
+        "value": "cov_mismatch",
+        "label": "COV Mismatch"
+      },
+      {
+        "value": "fi_to_fi_transparency",
+        "label": "FI To FI Transparency"
+      },
+      {
+        "value": "minimal_return",
+        "label": "Minimal Return"
+      },
+      {
+        "value": "return",
+        "label": "Return"
+      },
+      {
+        "value": "return_simple",
+        "label": "Return Simple"
+      },
+      {
+        "value": "standard",
+        "label": "Standard"
+      }
+    ],
+    "MT205": [
+      {
+        "value": "bank_transfer_cover",
+        "label": "Bank Transfer Cover"
+      },
+      {
+        "value": "bank_transfer_non_cover",
+        "label": "Bank Transfer Non Cover"
+      },
+      {
+        "value": "regulatory_reporting",
+        "label": "Regulatory Reporting"
+      },
+      {
+        "value": "rejection_payment",
+        "label": "Rejection Payment"
+      },
+      {
+        "value": "return_payment",
+        "label": "Return Payment"
+      },
+      {
+        "value": "urgent_liquidity_transfer",
+        "label": "Urgent Liquidity Transfer"
+      }
+    ],
+    "MT210": [
+      {
+        "value": "expected_incoming_funds",
+        "label": "Expected Incoming Funds"
+      },
+      {
+        "value": "fx_settlement_notice",
+        "label": "FX Settlement Notice"
+      },
+      {
+        "value": "securities_settlement_notice",
+        "label": "Securities Settlement Notice"
+      },
+      {
+        "value": "single_payment_notice",
+        "label": "Single Payment Notice"
+      }
+    ],
+    "MT292": [
+      {
+        "value": "compliance_hold_cancellation",
+        "label": "Compliance Hold Cancellation"
+      },
+      {
+        "value": "fi_cancellation_request",
+        "label": "FI Cancellation Request"
+      },
+      {
+        "value": "system_error_cancellation",
+        "label": "System Error Cancellation"
+      },
+      {
+        "value": "wrong_beneficiary_cancellation",
+        "label": "Wrong Beneficiary Cancellation"
+      }
+    ],
+    "MT296": [
+      {
+        "value": "cancellation_accepted",
+        "label": "Cancellation Accepted"
+      },
+      {
+        "value": "cancellation_rejected",
+        "label": "Cancellation Rejected"
+      },
+      {
+        "value": "inquiry_response",
+        "label": "Inquiry Response"
+      },
+      {
+        "value": "no_payment_found",
+        "label": "No Payment Found"
+      },
+      {
+        "value": "partial_cancellation",
+        "label": "Partial Cancellation"
+      }
+    ],
+    "MT299": [
+      {
+        "value": "cbpr_payment_response",
+        "label": "CBPR+ Payment Response"
+      },
+      {
+        "value": "regulatory_notification",
+        "label": "Regulatory Notification"
+      },
+      {
+        "value": "settlement_instructions_update",
+        "label": "Settlement Instructions Update"
+      },
+      {
+        "value": "system_maintenance_notice",
+        "label": "System Maintenance Notice"
+      }
+    ],
+    "MT900": [
+      {
+        "value": "basic_debit_confirmation",
+        "label": "Basic Debit Confirmation"
+      },
+      {
+        "value": "cbpr_debit_confirmation",
+        "label": "CBPR+ Debit Confirmation"
+      },
+      {
+        "value": "direct_debit_confirmation",
+        "label": "Direct Debit Confirmation"
+      },
+      {
+        "value": "fee_debit_confirmation",
+        "label": "Fee Debit Confirmation"
+      },
+      {
+        "value": "fx_transaction_debit",
+        "label": "FX Transaction Debit"
+      },
+      {
+        "value": "standing_order_debit",
+        "label": "Standing Order Debit"
+      }
+    ],
+    "MT910": [
+      {
+        "value": "basic_credit_confirmation",
+        "label": "Basic Credit Confirmation"
+      },
+      {
+        "value": "cbpr_credit_confirmation",
+        "label": "CBPR+ Credit Confirmation"
+      },
+      {
+        "value": "dividend_payment",
+        "label": "Dividend Payment"
+      },
+      {
+        "value": "incoming_wire_transfer",
+        "label": "Incoming Wire Transfer"
+      },
+      {
+        "value": "interest_credit",
+        "label": "Interest Credit"
+      },
+      {
+        "value": "refund_credit",
+        "label": "Refund Credit"
+      }
+    ],
+    "MT920": [
+      {
+        "value": "interim_report_request",
+        "label": "Interim Report Request"
+      },
+      {
+        "value": "multi_account_request",
+        "label": "Multi Account Request"
+      },
+      {
+        "value": "statement_request_basic",
+        "label": "Statement Request Basic"
+      }
+    ],
+    "MT935": [
+      {
+        "value": "central_bank_rate_notification",
+        "label": "Central Bank Rate Notification"
+      },
+      {
+        "value": "deposit_rate_change",
+        "label": "Deposit Rate Change"
+      },
+      {
+        "value": "fx_rate_update",
+        "label": "FX Rate Update"
+      },
+      {
+        "value": "loan_rate_adjustment",
+        "label": "Loan Rate Adjustment"
+      },
+      {
+        "value": "multi_product_rate_change",
+        "label": "Multi Product Rate Change"
+      }
+    ],
+    "MT940": [
+      {
+        "value": "daily_account_statement",
+        "label": "Daily Account Statement"
+      },
+      {
+        "value": "interim_statement_intraday",
+        "label": "Interim Statement Intraday"
+      },
+      {
+        "value": "repeated_sequence_issues",
+        "label": "Repeated Sequence Issues"
+      },
+      {
+        "value": "year_end_statement",
+        "label": "Year End Statement"
+      }
+    ],
+    "MT941": [
+      {
+        "value": "daily_balance_report",
+        "label": "Daily Balance Report"
+      },
+      {
+        "value": "multi_currency_balance",
+        "label": "Multi Currency Balance"
+      },
+      {
+        "value": "negative_balance_report",
+        "label": "Negative Balance Report"
+      }
+    ],
+    "MT942": [
+      {
+        "value": "intraday_liquidity_report",
+        "label": "Intraday Liquidity Report"
+      },
+      {
+        "value": "real_time_position_update",
+        "label": "Real Time Position Update"
+      },
+      {
+        "value": "treasury_cash_sweep",
+        "label": "Treasury Cash Sweep"
+      }
+    ],
+    "MT950": [
+      {
+        "value": "correspondent_banking",
+        "label": "Correspondent Banking"
+      },
+      {
+        "value": "high_volume_batch",
+        "label": "High Volume Batch"
+      },
+      {
+        "value": "simplified_statement",
+        "label": "Simplified Statement"
+      }
+    ]
+  },
+  "totalTypes": 24,
+  "totalScenarios": 169
+}
