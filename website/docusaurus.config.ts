@@ -66,27 +66,36 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
     navbar: {
+      title: '',
       logo: {
         alt: 'Plasmatic Logo',
         src: 'img/Plasmatic_Logo.png',
-        href: '/',
-        style: { height: '40px', width: 'auto' },
       },
       items: [
         {
-          href: 'https://goplasmatic.io',
-          position: 'right',
-          html: '<img src="/img/plasmatic_logo_square.png" alt="Plasmatic Home" style="height: 24px; width: 24px; vertical-align: middle;" />',
-          'aria-label': 'Plasmatic Home',
+          type: 'docSidebar',
+          sidebarId: 'tutorialSidebar',
+          position: 'left',
+          label: 'Docs',
         },
         {
           href: 'https://github.com/GoPlasmatic',
+          label: 'GitHub',
           position: 'right',
-          className: 'header-github-link',
-          'aria-label': 'GitHub repository',
         },
       ],
+    },
+    docs: {
+      sidebar: {
+        hideable: true,
+        autoCollapseCategories: true,
+      },
     },
     footer: {
       style: 'dark',
