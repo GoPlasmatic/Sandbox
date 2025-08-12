@@ -43,11 +43,20 @@
   fill: #ffffff !important;
 }
 
-button[class*="colorModeToggle"] {
+/* Force all theme toggle buttons to be white in all contexts */
+[data-theme='light'] button[class*="colorModeToggle"],
+[data-theme='dark'] button[class*="colorModeToggle"] {
   color: #ffffff !important;
 }
 
-button[class*="colorModeToggle"] svg {
+[data-theme='light'] button[class*="colorModeToggle"] svg,
+[data-theme='dark'] button[class*="colorModeToggle"] svg {
+  fill: #ffffff !important;
+}
+
+/* Also ensure the moon/sun icons stay white */
+.lightToggleIcon_node_modules-\@docusaurus-theme-classic-lib-theme-ColorModeToggle-styles-module,
+.darkToggleIcon_node_modules-\@docusaurus-theme-classic-lib-theme-ColorModeToggle-styles-module {
   fill: #ffffff !important;
 }
 
