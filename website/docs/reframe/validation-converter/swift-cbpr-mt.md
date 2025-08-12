@@ -38,12 +38,6 @@ The validation process follows these steps:
 - **Multiple Message Types**: Supports various MT message types (MT103, MT202, MT900, etc.)
 - **Block Analysis**: Validates all SWIFT blocks (1-5) and their components
 
-### Configuration
-
-The API endpoint can be configured through environment variables:
-- **Development**: `http://localhost:3000/validate/mt`
-- **Production**: Update the configuration in `src/config/api.ts`
-
 ### Supported Message Types
 
 The validator supports the following SWIFT MT message types:

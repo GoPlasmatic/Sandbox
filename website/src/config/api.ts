@@ -3,6 +3,7 @@
 
 export const getApiBaseUrl = (): string => {
   // Try to get the API URL from Docusaurus config (build-time configuration)
+  // This should be the primary source of the API URL
   try {
     if (typeof window !== 'undefined') {
       // Client-side: try to get from Docusaurus context
@@ -17,16 +18,9 @@ export const getApiBaseUrl = (): string => {
     // Fallback if context is not available
   }
   
-  // Default fallback for development
-  if (typeof window !== 'undefined') {
-    const hostname = window.location.hostname;
-    if (hostname === 'localhost' || hostname === '127.0.0.1') {
-      return 'http://localhost:3000';
-    }
-  }
-  
-  // Production fallback - this should ideally be set via REFRAME_API_URL env var
-  return 'https://api.reframe.example.com';
+  // Fallback - only use localhost default if no build-time config was provided
+  // This ensures Docker containers respect the REFRAME_API_URL build arg
+  return 'http://localhost:3000';
 };
 
 // For use in React components where we can access Docusaurus context

@@ -37,12 +37,6 @@ The validation process follows these steps:
 - **Interactive Interface**: Easy-to-use web interface with sample messages
 - **Multiple Message Types**: Supports all major ISO20022 message types (pacs, pain, camt)
 
-### Configuration
-
-The API endpoint can be configured through environment variables:
-- **Development**: `http://localhost:3000/validate/mx`
-- **Production**: Update the configuration in `src/config/api.ts`
-
 ### Supported Message Types
 
 The validator supports the following ISO20022 message types:
