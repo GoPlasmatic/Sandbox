@@ -3,8 +3,7 @@ import CodeBlock from '@theme/CodeBlock';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { API_ENDPOINTS } from '../../config/api';
 import { 
-  getMXMessageTypes, 
-  getMXScenarios,
+  getReframeScenarios,
   type MessageTypeOption,
   type DropdownOption
 } from '../../utils/dropdownData';
@@ -57,7 +56,15 @@ const formatXML = (xml: string): string => {
         // Closing tag
         if (token.startsWith('</')) {
           indent--;
-          formatted += tab.repeat(Math.max(0, indent)) + token;
+          // Check if previous token was text content
+          const prevToken = i > 0 ? tokens[i - 1] : '';
+          if (prevToken && !prevToken.startsWith('<')) {
+            // Previous was text content, don't add indentation
+            formatted += token;
+          } else {
+            // Previous was a tag, add indentation
+            formatted += tab.repeat(Math.max(0, indent)) + token;
+          }
           if (i < tokens.length - 1 && !tokens[i + 1].startsWith('<')) {
             // Don't add newline if next token is text content
           } else {
@@ -83,7 +90,8 @@ const formatXML = (xml: string): string => {
       }
       // Text content
       else {
-        formatted += token.trim();
+        // Just add the text content as-is, no modifications
+        formatted += token;
       }
     }
     
@@ -125,10 +133,8 @@ const ISO20022toMTTransformer: React.FC = () => {
   const [apiRequest, setApiRequest] = useState('');
   const [apiResponse, setApiResponse] = useState('');
   const [transformationResult, setTransformationResult] = useState<any>(null);
-  const [messageType, setMessageType] = useState('');
   const [scenario, setScenario] = useState('');
-  const [messageTypes, setMessageTypes] = useState<MessageTypeOption[]>([]);
-  const [scenarios, setScenarios] = useState<DropdownOption[]>([]);
+  const [scenarios, setScenarios] = useState<any[]>([]);
 
   const { siteConfig } = useDocusaurusContext();
   const API_BASE_URL = (siteConfig.customFields?.REFRAME_API_URL as string) || 'http://localhost:3000';
@@ -248,7 +254,15 @@ ${JSON.stringify(requestBody, null, 2)}`);
           // Closing tag
           if (token.startsWith('</')) {
             indent--;
-            formatted += tab.repeat(Math.max(0, indent)) + token;
+            // Check if previous token was text content
+            const prevToken = i > 0 ? tokens[i - 1] : '';
+            if (prevToken && !prevToken.startsWith('<')) {
+              // Previous was text content, don't add indentation
+              formatted += token;
+            } else {
+              // Previous was a tag, add indentation
+              formatted += tab.repeat(Math.max(0, indent)) + token;
+            }
             if (i < tokens.length - 1 && !tokens[i + 1].startsWith('<')) {
               // Don't add newline if next token is text content
             } else {
@@ -274,7 +288,8 @@ ${JSON.stringify(requestBody, null, 2)}`);
         }
         // Text content
         else {
-          formatted += token.trim();
+          // Just add the text content as-is, no modifications
+          formatted += token;
         }
       }
       
@@ -286,51 +301,48 @@ ${JSON.stringify(requestBody, null, 2)}`);
   };
 
   // Load message types on component mount
-  useEffect(() => {
-    const loadMessageTypes = async () => {
-      const types = await getMXMessageTypes();
-      setMessageTypes(types);
-      // Set default message type
-      if (types.length > 0 && !messageType) {
-        setMessageType(types[0].value);
-      }
-    };
-    loadMessageTypes();
-  }, []);
-
-  // Load scenarios when message type changes
+  // Load scenarios on component mount (reverse transformations)
   useEffect(() => {
     const loadScenarios = async () => {
-      if (messageType) {
-        const scenarioList = await getMXScenarios(messageType);
-        setScenarios(scenarioList);
-        // Set default scenario
-        if (scenarioList.length > 0 && !scenario) {
-          setScenario(scenarioList[0].value);
-        }
-      } else {
-        setScenarios([]);
+      // Load reverse transformation scenarios (MX to MT)
+      const scenarioList = await getReframeScenarios('reverse');
+      setScenarios(scenarioList);
+      // Set default scenario
+      if (scenarioList.length > 0 && !scenario) {
+        setScenario(scenarioList[0].value);
       }
     };
     loadScenarios();
-  }, [messageType]);
+  }, []);
+
+  // Load scenarios when message type changes
 
   const handleGenerateSample = async () => {
-    if (!messageType || !scenario) {
-      setError('Please select both message type and scenario');
+    if (!scenario) {
+      setError('Please select a transformation scenario');
       return;
     }
 
     setGeneratingMessage(true);
     setError('');
 
-    const requestBody = {
-      message_type: messageType, // Use value from dropdown
-      scenario: scenario,
-      config: {}
-    };
-
     try {
+      // Find the selected scenario to get its source type
+      const selectedScenario = scenarios.find(s => s.value === scenario);
+      if (!selectedScenario) {
+        throw new Error('Selected scenario not found');
+      }
+      
+      const sourceType = selectedScenario.source; // e.g., pacs.008
+      
+      // Generate a sample message using the Reframe API
+      const requestBody = {
+        message_type: sourceType,
+        config: {
+          scenario: scenario
+        }
+      };
+
       const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.GENERATE_SAMPLE}`, {
         method: 'POST',
         headers: {
@@ -345,14 +357,15 @@ ${JSON.stringify(requestBody, null, 2)}`);
         throw new Error(data.error || data.message || `HTTP error! status: ${response.status}`);
       }
 
-      // Handle new API response format
+      // Handle API response
       let generatedMessage = data.result || data.transformed_message || data.message || '';
       
       if (generatedMessage) {
-        generatedMessage = formatXML(generatedMessage);
+        const formattedMessage = formatXML(generatedMessage);
+        setInputMessage(formattedMessage);
+      } else {
+        throw new Error('No message generated');
       }
-
-      setInputMessage(generatedMessage);
     } catch (err: any) {
       console.error('Generation error:', err);
       setError(err.message || 'Failed to generate sample message. Please check your connection and try again.');
@@ -382,45 +395,21 @@ ${JSON.stringify(requestBody, null, 2)}`);
       {/* Sample Generation Section */}
       <div style={cardContainerStyle}>
         <h3 style={sectionHeaderStyle}>
-          Generate Sample Message
+          Load Transformation Scenario
         </h3>
         
         <div style={formGridStyle}>
-          <div>
+          <div style={{ gridColumn: 'span 2' }}>
             <label style={labelStyle}>
-              Message Type
-            </label>
-            <select
-              value={messageType}
-              onChange={(e) => {
-                setMessageType(e.target.value);
-                setScenario('');
-              }}
-              style={selectStyle}
-              {...hoverEffects.select}
-            >
-              <option value="">Select message type...</option>
-              {messageTypes.map(type => (
-                <option key={type.value} value={type.value}>{type.label}</option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label style={labelStyle}>
-              Scenario
+              MX to MT Transformation Scenario
             </label>
             <select
               value={scenario}
               onChange={(e) => setScenario(e.target.value)}
-              disabled={!messageType}
-              style={{
-                ...selectStyle,
-                ...(messageType ? {} : disabledButtonStyle),
-              }}
-              {...(messageType ? hoverEffects.select : {})}
+              style={selectStyle}
+              {...hoverEffects.select}
             >
-              <option value="">Select scenario...</option>
+              <option value="">Select transformation scenario...</option>
               {scenarios.map(sc => (
                 <option key={sc.value} value={sc.value}>
                   {sc.label}
@@ -432,14 +421,14 @@ ${JSON.stringify(requestBody, null, 2)}`);
           <div style={{ display: 'flex', alignItems: 'flex-end' }}>
             <button
               onClick={handleGenerateSample}
-              disabled={!messageType || !scenario || generatingMessage}
+              disabled={!scenario || generatingMessage}
               style={{
                 ...primaryButtonStyle,
-                ...((!messageType || !scenario || generatingMessage) ? disabledButtonStyle : {}),
+                ...(!scenario || generatingMessage ? disabledButtonStyle : {}),
               }}
               {...hoverEffects.primaryButton}
             >
-              {generatingMessage ? <><span>⏳</span> Generating...</> : <><span>🚀</span> Generate Sample</>}
+              {generatingMessage ? <><span>⏳</span> Loading...</> : <><span>📥</span> Load Sample</>}
             </button>
           </div>
         </div>

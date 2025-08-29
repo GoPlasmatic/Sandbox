@@ -3,9 +3,7 @@ import CodeBlock from '@theme/CodeBlock';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { API_ENDPOINTS } from '../../config/api';
 import { 
-  getMXMessageTypes, 
-  getMXScenarios, 
-  getMXDescription,
+  getReframeScenarios,
   type MessageTypeOption,
   type DropdownOption
 } from '../../utils/dropdownData';
@@ -51,7 +49,15 @@ const formatXML = (xml: string): string => {
         // Closing tag
         if (token.startsWith('</')) {
           indent--;
-          formatted += tab.repeat(Math.max(0, indent)) + token;
+          // Check if previous token was text content
+          const prevToken = i > 0 ? tokens[i - 1] : '';
+          if (prevToken && !prevToken.startsWith('<')) {
+            // Previous was text content, don't add indentation
+            formatted += token;
+          } else {
+            // Previous was a tag, add indentation
+            formatted += tab.repeat(Math.max(0, indent)) + token;
+          }
           if (i < tokens.length - 1 && !tokens[i + 1].startsWith('<')) {
             // Don't add newline if next token is text content
           } else {
@@ -77,7 +83,8 @@ const formatXML = (xml: string): string => {
       }
       // Text content
       else {
-        formatted += token.trim();
+        // Just add the text content as-is, no modifications
+        formatted += token;
       }
     }
     
@@ -89,57 +96,31 @@ const formatXML = (xml: string): string => {
 };
 
 const ISO20022Generator: React.FC = () => {
-  const [messageType, setMessageType] = useState('');
   const [scenario, setScenario] = useState('');
   const [generatedContent, setGeneratedContent] = useState('');
   const [apiRequest, setApiRequest] = useState('');
   const [apiResponse, setApiResponse] = useState('');
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [messageTypes, setMessageTypes] = useState<MessageTypeOption[]>([]);
-  const [scenarios, setScenarios] = useState<DropdownOption[]>([]);
-  const [messageDescription, setMessageDescription] = useState<string>('');
+  const [scenarios, setScenarios] = useState<any[]>([]);
 
   // Get API base URL from Docusaurus config
   const { siteConfig } = useDocusaurusContext();
   const API_BASE_URL = (siteConfig.customFields?.REFRAME_API_URL as string) || 'http://localhost:3000';
   
-  // Load message types on component mount
-  useEffect(() => {
-    const loadMessageTypes = async () => {
-      const types = await getMXMessageTypes();
-      setMessageTypes(types);
-      // Auto-select first message type if available
-      if (types.length > 0 && !messageType) {
-        setMessageType(types[0].value);
-      }
-    };
-    loadMessageTypes();
-  }, []);
-
-  // Load scenarios when message type changes
+  // Load scenarios on component mount (reverse transformations for ISO 20022)
   useEffect(() => {
     const loadScenarios = async () => {
-      if (messageType) {
-        const scenarioList = await getMXScenarios(messageType);
-        setScenarios(scenarioList);
-        // Auto-select first scenario if available
-        if (scenarioList.length > 0) {
-          setScenario(scenarioList[0].value);
-        } else {
-          setScenario('');
-        }
-        
-        // Load message description
-        const desc = await getMXDescription(messageType);
-        setMessageDescription(desc || '');
-      } else {
-        setScenarios([]);
-        setMessageDescription('');
+      // Load reverse transformation scenarios (MX source messages)
+      const scenarioList = await getReframeScenarios('reverse');
+      setScenarios(scenarioList);
+      // Auto-select first scenario if available
+      if (scenarioList.length > 0 && !scenario) {
+        setScenario(scenarioList[0].value);
       }
     };
     loadScenarios();
-  }, [messageType]);
+  }, []);
 
   const scenariosByType: Record<string, string[]> = {
     'camt.025': ['central_bank_rate_notification', 'deposit_rate_change', 'fx_rate_update', 
@@ -392,8 +373,16 @@ const ISO20022Generator: React.FC = () => {
   // Scenarios are now loaded dynamically via useEffect
 
   const handleGenerate = async () => {
-    if (!messageType || !scenario) {
-      alert('Please select both message type and scenario');
+    if (!scenario) {
+      alert('Please select a scenario');
+      return;
+    }
+
+    // Find the selected scenario to get its source type
+    const selectedScenario = scenarios.find(s => s.value === scenario);
+    if (!selectedScenario) {
+      alert('Selected scenario not found');
+      setLoading(false);
       return;
     }
 
@@ -401,9 +390,10 @@ const ISO20022Generator: React.FC = () => {
     setCopied(false);
 
     const requestBody = {
-      message_type: messageType, // Use value from dropdown
-      scenario: scenario,
-      config: {} // API requires config field
+      message_type: selectedScenario.source, // Use source from scenario
+      config: {
+        scenario: scenario
+      }
     };
 
     const apiEndpoint = `${API_BASE_URL}${API_ENDPOINTS.GENERATE_SAMPLE}`;
@@ -547,39 +537,15 @@ ${JSON.stringify(requestBody, null, 2)}`);
         </h3>
         
         <div style={formGridStyle}>
-          <div>
+          <div style={{ gridColumn: 'span 2' }}>
             <label style={labelStyle}>
-              Message Type
-            </label>
-            <select
-              value={messageType}
-              onChange={(e) => {
-                setMessageType(e.target.value);
-                setScenario('');
-              }}
-              style={selectStyle}
-              {...hoverEffects.select}
-            >
-              <option value="">Select message type...</option>
-              {messageTypes.map(type => (
-                <option key={type.value} value={type.value}>{type.label}</option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label style={labelStyle}>
-              Scenario
+              ISO 20022 Scenario
             </label>
             <select
               value={scenario}
               onChange={(e) => setScenario(e.target.value)}
-              disabled={!messageType}
-              style={{
-                ...selectStyle,
-                ...(messageType ? {} : disabledButtonStyle),
-              }}
-              {...(messageType ? hoverEffects.select : {})}
+              style={selectStyle}
+              {...hoverEffects.select}
             >
               <option value="">Select scenario...</option>
               {scenarios.map(s => (
@@ -591,10 +557,10 @@ ${JSON.stringify(requestBody, null, 2)}`);
           <div style={{ display: 'flex', alignItems: 'flex-end' }}>
             <button
               onClick={handleGenerate}
-              disabled={loading}
+              disabled={loading || !scenario}
               style={{
                 ...primaryButtonStyle,
-                ...(loading ? disabledButtonStyle : {}),
+                ...((loading || !scenario) ? disabledButtonStyle : {}),
               }}
               {...hoverEffects.primaryButton}
             >

@@ -3,9 +3,7 @@ import CodeBlock from '@theme/CodeBlock';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { API_ENDPOINTS } from '../../config/api';
 import { 
-  getMXMessageTypes, 
-  getMXScenarios, 
-  getMXDescription,
+  getReframeScenarios,
   type MessageTypeOption,
   type DropdownOption
 } from '../../utils/dropdownData';
@@ -50,7 +48,15 @@ const formatXML = (xml: string): string => {
       if (token.startsWith('<')) {
         if (token.startsWith('</')) {
           indent--;
-          formatted += tab.repeat(Math.max(0, indent)) + token;
+          // Check if previous token was text content
+          const prevToken = i > 0 ? tokens[i - 1] : '';
+          if (prevToken && !prevToken.startsWith('<')) {
+            // Previous was text content, don't add indentation
+            formatted += token;
+          } else {
+            // Previous was a tag, add indentation
+            formatted += tab.repeat(Math.max(0, indent)) + token;
+          }
           if (i < tokens.length - 1 && !tokens[i + 1].startsWith('<')) {
           } else {
             formatted += '\n';
@@ -71,7 +77,8 @@ const formatXML = (xml: string): string => {
         }
       }
       else {
-        formatted += token.trim();
+        // Just add the text content as-is, no modifications
+        formatted += token;
       }
     }
     
@@ -105,137 +112,49 @@ const ISO20022Validator: React.FC = () => {
   const [apiResponse, setApiResponse] = useState('');
   
   // Sample generation states
-  const [messageType, setMessageType] = useState('');
   const [scenario, setScenario] = useState('');
-  const [messageTypes, setMessageTypes] = useState<MessageTypeOption[]>([]);
-  const [scenarios, setScenarios] = useState<DropdownOption[]>([]);
-  const [messageDescription, setMessageDescription] = useState<string>('');
+  const [scenarios, setScenarios] = useState<any[]>([]);
 
   const { siteConfig } = useDocusaurusContext();
   const API_BASE_URL = (siteConfig.customFields?.REFRAME_API_URL as string) || 'http://localhost:3000';
 
   // Load message types on component mount
-  useEffect(() => {
-    const loadMessageTypes = async () => {
-      const types = await getMXMessageTypes();
-      setMessageTypes(types);
-      // Auto-select first message type if available
-      if (types.length > 0 && !messageType) {
-        setMessageType(types[0].value);
-      }
-    };
-    loadMessageTypes();
-  }, []);
-
-  // Load scenarios when message type changes
+  // Load scenarios on component mount (reverse transformations for ISO 20022)
   useEffect(() => {
     const loadScenarios = async () => {
-      if (messageType) {
-        const scenarioList = await getMXScenarios(messageType);
-        setScenarios(scenarioList);
-        // Auto-select first scenario if available
-        if (scenarioList.length > 0) {
-          setScenario(scenarioList[0].value);
-        } else {
-          setScenario('');
-        }
-        
-        // Load message description
-        const desc = await getMXDescription(messageType);
-        setMessageDescription(desc || '');
-      } else {
-        setScenarios([]);
-        setMessageDescription('');
+      // Load reverse transformation scenarios (MX source messages)
+      const scenarioList = await getReframeScenarios('reverse');
+      setScenarios(scenarioList);
+      // Set default scenario
+      if (scenarioList.length > 0 && !scenario) {
+        setScenario(scenarioList[0].value);
       }
     };
     loadScenarios();
-  }, [messageType]);
-
-  // Scenarios are now loaded dynamically via useEffect
-  // Remove hardcoded scenarios
-  const scenariosByType: Record<string, string[]> = {
-    'camt.025': ['central_bank_rate_notification', 'deposit_rate_change', 'fx_rate_update', 
-                'loan_rate_adjustment', 'multi_product_rate_change'],
-    'camt.029': ['answer_cancellation', 'answer_inquiry_response', 'answer_pending_investigation',
-                'answer_rejection', 'cancellation_accepted', 'cancellation_rejected',
-                'cbpr_cancellation_response', 'inquiry_response', 'no_payment_found',
-                'partial_cancellation'],
-    'camt.052': ['daily_balance_report', 'intraday_liquidity_report', 'multi_currency_balance',
-                'negative_balance_report', 'real_time_position_update', 'treasury_cash_sweep'],
-    'camt.053': ['correspondent_banking', 'daily_account_statement', 'high_volume_batch',
-                'interim_statement_intraday', 'repeated_sequence_issues', 'simplified_statement',
-                'year_end_statement'],
-    'camt.054': ['basic_credit_confirmation', 'basic_debit_confirmation', 'cbpr_credit_confirmation',
-                'cbpr_debit_confirmation', 'direct_debit_confirmation', 'dividend_payment',
-                'fee_debit_confirmation', 'fx_transaction_debit', 'incoming_wire_transfer',
-                'interest_credit', 'refund_credit', 'standing_order_debit'],
-    'camt.056': ['cbpr_cancellation_request', 'compliance_hold_cancellation', 'fi_cancellation_request',
-                'fraud_prevention_cancellation', 'regulatory_compliance_cancellation', 'request_cancellation',
-                'system_error_cancellation', 'urgent_cancellation', 'wrong_beneficiary_cancellation'],
-    'camt.057': ['expected_incoming_funds', 'fx_settlement_notice', 'securities_settlement_notice',
-                'single_payment_notice'],
-    'camt.060': ['interim_report_request', 'multi_account_request', 'statement_request_basic'],
-    'pacs.002': ['cheque_collection_advice', 'duplicate_cheque_stop', 'foreign_cheque_collection',
-                'fraud_prevention_stop', 'lost_cheque_stop', 'returned_cheque_advice',
-                'single_cheque_advice', 'stop_payment_accepted', 'stop_payment_pending',
-                'stop_payment_rejected'],
-    'pacs.003': ['cbpr_insurance_collection', 'cbpr_subscription_collection', 'cbpr_utility_collection',
-                'fi_direct_debit_basic', 'fi_direct_debit_cbpr', 'fi_direct_debit_multiple',
-                'fi_direct_debit_recurring', 'fi_direct_debit_return'],
-    'pacs.008': ['standard', 'minimal', 'stp', 'cbpr_stp_compliant', 'cbpr_stp_enhanced',
-                'cbpr_business_payment', 'cbpr_charity_donation', 'cbpr_commission_payment',
-                'cbpr_crypto_settlement', 'cbpr_dividend_distribution', 'cbpr_dividend_payment',
-                'cbpr_ecommerce_b2c', 'cbpr_education_international', 'cbpr_education_payment',
-                'cbpr_fees_payment', 'cbpr_gig_economy', 'cbpr_government_disbursement',
-                'cbpr_healthcare_payment', 'cbpr_insurance_cross_border', 'cbpr_insurance_payment',
-                'cbpr_interest_payment', 'cbpr_investment_payment', 'cbpr_loan_disbursement',
-                'cbpr_pension_payment', 'cbpr_person_to_person', 'cbpr_real_estate',
-                'cbpr_remittance_corridor', 'cbpr_rent_payment', 'cbpr_royalty_payment',
-                'cbpr_salary_payment', 'cbpr_sanctions_failure', 'cbpr_social_security',
-                'cbpr_subscription_saas', 'cbpr_supplier_payment', 'cbpr_tax_payment',
-                'cbpr_trade_finance', 'cbpr_treasury_intercompany', 'cbpr_utility_cross_border',
-                'cbpr_utility_payment', 'correspondent_banking', 'cover_payment', 'duplicate_uetr',
-                'fx_conversion', 'high_value', 'missing_lei_entity', 'regulatory_compliant',
-                'regulatory_test', 'rejection', 'remit_basic', 'remit_structured',
-                'remittance_enhanced', 'return', 'treasury_payment', 'unresolved_intermediary'],
-    'pacs.009': ['standard', 'bank_transfer_cover', 'bank_transfer_non_cover', 'cbpr_cov_complex_routing',
-                'cbpr_cov_compliance_enhanced', 'cbpr_cov_rejection', 'cbpr_cov_return',
-                'cbpr_cov_standard', 'cbpr_serial_payment', 'cov_mismatch', 'fi_to_fi_transparency',
-                'minimal_return', 'regulatory_reporting', 'rejection_payment', 'return',
-                'return_payment', 'return_simple', 'urgent_liquidity_transfer'],
-    'pain.001': ['standard', 'minimal', 'bulk_payment', 'cbpr_corporate_bulk', 'cbpr_payroll',
-                'cbpr_supplier_batch', 'multi_currency', 'salary_payment', 'scheduled_payment',
-                'urgent_payment', 'vendor_payment'],
-    'pain.008': ['authorized_bulk_collection', 'general_direct_debit_basic', 'return_processing',
-                'unauthorized_debit_processing']
-  };
-
-  const scenarioDisplayNames: Record<string, string> = {
-    'cbpr_stp_compliant': 'CBPR+ STP Compliant',
-    'cbpr_stp_enhanced': 'CBPR+ STP Enhanced',
-    'cbpr_business_payment': 'CBPR+ Business Payment',
-    'central_bank_rate_notification': 'Central Bank Rate Notification',
-    'daily_balance_report': 'Daily Balance Report',
-    'correspondent_banking': 'Correspondent Banking',
-    'basic_credit_confirmation': 'Basic Credit Confirmation',
-    'cbpr_cancellation_request': 'CBPR+ Cancellation Request',
-    'bulk_payment': 'Bulk Payment',
-    // Add more as needed - keeping it short for brevity
-  };
+  }, []);
 
   const handleGenerateSample = async () => {
-    if (!messageType || !scenario) {
-      setError('Please select both message type and scenario');
+    if (!scenario) {
+      setError('Please select a scenario');
       return;
     }
 
     setGeneratingMessage(true);
     setError('');
 
+    // Find the selected scenario to get its source type
+    const selectedScenario = scenarios.find(s => s.value === scenario);
+    if (!selectedScenario) {
+      setError('Selected scenario not found');
+      setGeneratingMessage(false);
+      return;
+    }
+
     const requestBody = {
-      message_type: messageType, // Use value from dropdown
-      scenario: scenario,
-      config: {} // API requires config field
+      message_type: selectedScenario.source, // Use source from scenario
+      config: {
+        scenario: scenario
+      }
     };
 
     try {
@@ -327,7 +246,6 @@ ${JSON.stringify(requestBody, null, 2)}`);
     setInputMessage('');
     setValidationResult(null);
     setError('');
-    setMessageType('');
     setScenario('');
   };
 
@@ -455,39 +373,15 @@ ${JSON.stringify(requestBody, null, 2)}`);
         </h3>
         
         <div style={formGridStyle}>
-          <div>
+          <div style={{ gridColumn: 'span 2' }}>
             <label style={labelStyle}>
-              Message Type
-            </label>
-            <select
-              value={messageType}
-              onChange={(e) => {
-                setMessageType(e.target.value);
-                setScenario('');
-              }}
-              style={selectStyle}
-              {...hoverEffects.select}
-            >
-              <option value="">Select message type...</option>
-              {messageTypes.map(type => (
-                <option key={type.value} value={type.value}>{type.label}</option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label style={labelStyle}>
-              Scenario
+              ISO 20022 Scenario
             </label>
             <select
               value={scenario}
               onChange={(e) => setScenario(e.target.value)}
-              disabled={!messageType}
-              style={{
-                ...selectStyle,
-                ...(messageType ? {} : disabledButtonStyle),
-              }}
-              {...(messageType ? hoverEffects.select : {})}
+              style={selectStyle}
+              {...hoverEffects.select}
             >
               <option value="">Select scenario...</option>
               {scenarios.map(sc => (
@@ -501,10 +395,10 @@ ${JSON.stringify(requestBody, null, 2)}`);
           <div style={{ display: 'flex', alignItems: 'flex-end' }}>
             <button
               onClick={handleGenerateSample}
-              disabled={!messageType || !scenario || generatingMessage}
+              disabled={!scenario || generatingMessage}
               style={{
                 ...primaryButtonStyle,
-                ...((!messageType || !scenario || generatingMessage) ? disabledButtonStyle : {}),
+                ...(!scenario || generatingMessage ? disabledButtonStyle : {}),
               }}
               {...hoverEffects.primaryButton}
             >

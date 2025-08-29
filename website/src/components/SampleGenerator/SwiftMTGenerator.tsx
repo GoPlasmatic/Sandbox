@@ -3,9 +3,7 @@ import CodeBlock from '@theme/CodeBlock';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { API_ENDPOINTS } from '../../config/api';
 import { 
-  getSwiftMTMessageTypes, 
-  getSwiftMTScenarios, 
-  getSwiftMTDescription,
+  getReframeScenarios,
   type MessageTypeOption,
   type DropdownOption
 } from '../../utils/dropdownData';
@@ -28,61 +26,43 @@ import {
 } from '../../styles/componentStyles';
 
 const SwiftMTGenerator: React.FC = () => {
-  const [messageType, setMessageType] = useState('');
   const [scenario, setScenario] = useState('');
   const [generatedContent, setGeneratedContent] = useState('');
   const [apiRequest, setApiRequest] = useState('');
   const [apiResponse, setApiResponse] = useState('');
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [messageTypes, setMessageTypes] = useState<MessageTypeOption[]>([]);
-  const [scenarios, setScenarios] = useState<DropdownOption[]>([]);
-  const [messageDescription, setMessageDescription] = useState<string>('');
+  const [scenarios, setScenarios] = useState<any[]>([]);
 
   // Get API base URL from Docusaurus config
   const { siteConfig } = useDocusaurusContext();
   const API_BASE_URL = (siteConfig.customFields?.REFRAME_API_URL as string) || 'http://localhost:3000';
 
-  // Load message types on component mount
-  useEffect(() => {
-    const loadMessageTypes = async () => {
-      const types = await getSwiftMTMessageTypes();
-      setMessageTypes(types);
-      // Auto-select first message type if available
-      if (types.length > 0 && !messageType) {
-        setMessageType(types[0].value);
-      }
-    };
-    loadMessageTypes();
-  }, []);
-
-  // Load scenarios when message type changes
+  // Load scenarios on component mount (forward transformations for Swift MT)
   useEffect(() => {
     const loadScenarios = async () => {
-      if (messageType) {
-        const scenarioList = await getSwiftMTScenarios(messageType);
-        setScenarios(scenarioList);
-        // Auto-select first scenario if available
-        if (scenarioList.length > 0) {
-          setScenario(scenarioList[0].value);
-        } else {
-          setScenario('');
-        }
-        
-        // Load message description
-        const desc = await getSwiftMTDescription(messageType);
-        setMessageDescription(desc || '');
-      } else {
-        setScenarios([]);
-        setMessageDescription('');
+      // Load forward transformation scenarios (MT source messages)
+      const scenarioList = await getReframeScenarios('forward');
+      setScenarios(scenarioList);
+      // Auto-select first scenario if available
+      if (scenarioList.length > 0 && !scenario) {
+        setScenario(scenarioList[0].value);
       }
     };
     loadScenarios();
-  }, [messageType]);
+  }, []);
 
   const handleGenerate = async () => {
-    if (!messageType || !scenario) {
-      alert('Please select both message type and scenario');
+    if (!scenario) {
+      alert('Please select a scenario');
+      return;
+    }
+
+    // Find the selected scenario to get its source type
+    const selectedScenario = scenarios.find(s => s.value === scenario);
+    if (!selectedScenario) {
+      alert('Selected scenario not found');
+      setLoading(false);
       return;
     }
 
@@ -90,9 +70,10 @@ const SwiftMTGenerator: React.FC = () => {
     setCopied(false);
 
     const requestBody = {
-      message_type: messageType, // Use uppercase as stored in dropdown
-      scenario: scenario,
-      config: {} // API requires config field
+      message_type: selectedScenario.source, // Use source from scenario
+      config: {
+        scenario: scenario
+      }
     };
 
     const apiEndpoint = `${API_BASE_URL}${API_ENDPOINTS.GENERATE_SAMPLE}`;
@@ -217,39 +198,15 @@ ${JSON.stringify(requestBody, null, 2)}`);
         </h3>
         
         <div style={formGridStyle}>
-          <div>
+          <div style={{ gridColumn: 'span 2' }}>
             <label style={labelStyle}>
-              Message Type
-            </label>
-            <select
-              value={messageType}
-              onChange={(e) => {
-                setMessageType(e.target.value);
-                setScenario('');
-              }}
-              style={selectStyle}
-              {...hoverEffects.select}
-            >
-              <option value="">Select message type...</option>
-              {messageTypes.map(type => (
-                <option key={type.value} value={type.value}>{type.label}</option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label style={labelStyle}>
-              Scenario
+              Swift MT Scenario
             </label>
             <select
               value={scenario}
               onChange={(e) => setScenario(e.target.value)}
-              disabled={!messageType}
-              style={{
-                ...selectStyle,
-                ...(messageType ? {} : disabledButtonStyle),
-              }}
-              {...(messageType ? hoverEffects.select : {})}
+              style={selectStyle}
+              {...hoverEffects.select}
             >
               <option value="">Select scenario...</option>
               {scenarios.map(s => (
@@ -261,10 +218,10 @@ ${JSON.stringify(requestBody, null, 2)}`);
           <div style={{ display: 'flex', alignItems: 'flex-end' }}>
             <button
               onClick={handleGenerate}
-              disabled={loading}
+              disabled={loading || !scenario}
               style={{
                 ...primaryButtonStyle,
-                ...(loading ? disabledButtonStyle : {}),
+                ...((loading || !scenario) ? disabledButtonStyle : {}),
               }}
               {...hoverEffects.primaryButton}
             >
@@ -272,20 +229,6 @@ ${JSON.stringify(requestBody, null, 2)}`);
             </button>
           </div>
         </div>
-
-        {/* Message description */}
-        {messageDescription && (
-          <div style={{ 
-            marginTop: '16px', 
-            padding: '12px', 
-            backgroundColor: 'var(--ifm-color-emphasis-200)', 
-            borderRadius: '8px',
-            fontSize: '14px',
-            color: 'var(--ifm-color-emphasis-700)'
-          }}>
-            <strong>Message Type:</strong> {messageDescription}
-          </div>
-        )}
       </div>
 
       {/* Result Section - Always Visible */}

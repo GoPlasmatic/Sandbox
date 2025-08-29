@@ -3,9 +3,7 @@ import CodeBlock from '@theme/CodeBlock';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { API_ENDPOINTS } from '../../config/api';
 import { 
-  getSwiftMTMessageTypes, 
-  getSwiftMTScenarios, 
-  getSwiftMTDescription,
+  getReframeScenarios,
   type MessageTypeOption,
   type DropdownOption
 } from '../../utils/dropdownData';
@@ -55,116 +53,50 @@ const SwiftMTValidator: React.FC = () => {
   const [apiResponse, setApiResponse] = useState('');
   
   // Sample generation states
-  const [messageType, setMessageType] = useState('');
   const [scenario, setScenario] = useState('');
-  const [messageTypes, setMessageTypes] = useState<MessageTypeOption[]>([]);
-  const [scenarios, setScenarios] = useState<DropdownOption[]>([]);
+  const [scenarios, setScenarios] = useState<any[]>([]);
   const [messageDescription, setMessageDescription] = useState<string>('');
 
   const { siteConfig } = useDocusaurusContext();
   const API_BASE_URL = (siteConfig.customFields?.REFRAME_API_URL as string) || 'http://localhost:3000';
 
-  // Load message types on component mount
-  useEffect(() => {
-    const loadMessageTypes = async () => {
-      const types = await getSwiftMTMessageTypes();
-      setMessageTypes(types);
-      // Auto-select first message type if available
-      if (types.length > 0 && !messageType) {
-        setMessageType(types[0].value);
-      }
-    };
-    loadMessageTypes();
-  }, []);
 
-  // Load scenarios when message type changes
+
+
+  // Load scenarios on component mount
   useEffect(() => {
     const loadScenarios = async () => {
-      if (messageType) {
-        const scenarioList = await getSwiftMTScenarios(messageType);
-        setScenarios(scenarioList);
-        // Auto-select first scenario if available
-        if (scenarioList.length > 0) {
-          setScenario(scenarioList[0].value);
-        } else {
-          setScenario('');
-        }
-        
-        // Load message description
-        const desc = await getSwiftMTDescription(messageType);
-        setMessageDescription(desc || '');
-      } else {
-        setScenarios([]);
-        setMessageDescription('');
+      const scenarioList = await getReframeScenarios('forward');
+      setScenarios(scenarioList);
+      if (scenarioList.length > 0 && !scenario) {
+        setScenario(scenarioList[0].value);
       }
     };
     loadScenarios();
-  }, [messageType]);
-
-  // Remove hardcoded scenarios - keeping this comment for reference
-  const scenariosByType: Record<string, string[]> = {
-    'MT101': ['standard', 'minimal', 'bulk_payment', 'cbpr_corporate_bulk_payment', 'cbpr_payroll_batch', 
-              'cbpr_supplier_batch', 'direct_debit', 'multi_currency', 'salary_payment', 
-              'scheduled_payment', 'urgent_payment', 'vendor_payment'],
-    'MT103': ['standard', 'minimal', 'stp', 'cbpr_stp_compliant', 'cbpr_stp_enhanced',
-              'cbpr_business_payment', 'cbpr_charity_donation', 'cbpr_commission_payment',
-              'cbpr_crypto_settlement', 'cbpr_dividend_distribution', 'cbpr_dividend_payment',
-              'cbpr_ecommerce_b2c', 'cbpr_education_international', 'cbpr_education_payment',
-              'cbpr_fees_payment', 'cbpr_gig_economy', 'cbpr_government_disbursement',
-              'cbpr_healthcare_payment', 'cbpr_insurance_cross_border', 'cbpr_insurance_payment',
-              'cbpr_interest_payment', 'cbpr_investment_payment', 'cbpr_loan_disbursement',
-              'cbpr_pension_payment', 'cbpr_person_to_person', 'cbpr_real_estate',
-              'cbpr_remittance_corridor', 'cbpr_rent_payment', 'cbpr_royalty_payment',
-              'cbpr_salary_payment', 'cbpr_social_security', 'cbpr_subscription_saas',
-              'cbpr_supplier_payment', 'cbpr_tax_payment', 'cbpr_trade_finance',
-              'cbpr_treasury_intercompany', 'cbpr_utility_cross_border', 'cbpr_utility_payment',
-              'correspondent_banking', 'cover_payment', 'fx_conversion', 'high_value',
-              'treasury_payment', 'regulatory_compliant', 'remit_basic', 'remit_structured',
-              'remittance_enhanced', 'rejection', 'return'],
-    'MT104': ['fi_direct_debit_basic', 'fi_direct_debit_cbpr', 'fi_direct_debit_multiple',
-              'fi_direct_debit_recurring', 'fi_direct_debit_return', 'cbpr_insurance_collection',
-              'cbpr_subscription_collection', 'cbpr_utility_collection'],
-    'MT107': ['general_direct_debit_basic', 'authorized_bulk_collection', 'return_processing',
-              'unauthorized_debit_processing'],
-    'MT110': ['single_cheque_advice', 'cheque_collection_advice', 'foreign_cheque_collection',
-              'returned_cheque_advice'],
-    'MT111': ['lost_cheque_stop', 'duplicate_cheque_stop', 'fraud_prevention_stop'],
-    'MT112': ['stop_payment_accepted', 'stop_payment_pending', 'stop_payment_rejected'],
-    'MT192': ['request_cancellation', 'cbpr_cancellation_request', 'fraud_prevention_cancellation',
-              'regulatory_compliance_cancellation', 'urgent_cancellation_mt202'],
-    'MT196': ['answer_cancellation', 'answer_inquiry_response', 'answer_pending_investigation',
-              'answer_rejection', 'cbpr_cancellation_response'],
-    'MT199': ['cbpr_cancellation', 'cbpr_inquiry'],
-    'MT202': ['standard', 'minimal', 'bank_to_bank_transfer', 'cover_payment', 'settlement_transfer'],
-    'MT205': ['standard', 'cover_payment', 'settlement_transfer'],
-    'MT210': ['standard', 'notice_to_receive'],
-    'MT292': ['cancellation_request', 'standard'],
-    'MT296': ['answer_cancellation', 'standard'],
-    'MT299': ['standard', 'free_format'],
-    'MT900': ['debit_confirmation', 'multiple_debits', 'standard'],
-    'MT910': ['credit_confirmation', 'multiple_credits', 'standard'],
-    'MT920': ['standard', 'request_message'],
-    'MT935': ['standard', 'rate_change_advice'],
-    'MT940': ['customer_statement', 'interim_statement', 'standard'],
-    'MT941': ['standard', 'balance_report'],
-    'MT942': ['standard', 'interim_transaction_report'],
-    'MT950': ['statement_message', 'daily_statement', 'standard']
-  };
-
+  }, []);
 
   const handleGenerateSample = async () => {
-    if (!messageType || !scenario) {
-      setError('Please select both message type and scenario');
+    if (!scenario) {
+      setError('Please select a scenario');
       return;
     }
 
     setGeneratingMessage(true);
     setError('');
 
+    // Find the selected scenario to get its source type
+    const selectedScenario = scenarios.find(s => s.value === scenario);
+    if (!selectedScenario) {
+      setError('Selected scenario not found');
+      setGeneratingMessage(false);
+      return;
+    }
+
     const requestBody = {
-      message_type: messageType, // Use uppercase as stored in dropdown
-      scenario: scenario,
-      config: {} // API requires config field
+      message_type: selectedScenario.source, // Use source from scenario
+      config: {
+        scenario: scenario
+      }
     };
 
     try {
@@ -440,39 +372,15 @@ ${JSON.stringify(requestBody, null, 2)}`);
         </h3>
         
         <div style={formGridStyle}>
-          <div>
+          <div style={{ gridColumn: 'span 2' }}>
             <label style={labelStyle}>
-              Message Type
-            </label>
-            <select
-              value={messageType}
-              onChange={(e) => {
-                setMessageType(e.target.value);
-                setScenario('');
-              }}
-              style={selectStyle}
-              {...hoverEffects.select}
-            >
-              <option value="">Select message type...</option>
-              {messageTypes.map(type => (
-                <option key={type.value} value={type.value}>{type.label}</option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label style={labelStyle}>
-              Scenario
+              Swift MT Scenario
             </label>
             <select
               value={scenario}
               onChange={(e) => setScenario(e.target.value)}
-              disabled={!messageType}
-              style={{
-                ...selectStyle,
-                ...(messageType ? {} : disabledButtonStyle),
-              }}
-              {...(messageType ? hoverEffects.select : {})}
+              style={selectStyle}
+              {...hoverEffects.select}
             >
               <option value="">Select scenario...</option>
               {scenarios.map(sc => (
@@ -486,10 +394,10 @@ ${JSON.stringify(requestBody, null, 2)}`);
           <div style={{ display: 'flex', alignItems: 'flex-end' }}>
             <button
               onClick={handleGenerateSample}
-              disabled={!messageType || !scenario || generatingMessage}
+              disabled={!scenario || generatingMessage}
               style={{
                 ...primaryButtonStyle,
-                ...((!messageType || !scenario || generatingMessage) ? disabledButtonStyle : {}),
+                ...(!scenario || generatingMessage ? disabledButtonStyle : {}),
               }}
               {...hoverEffects.primaryButton}
             >

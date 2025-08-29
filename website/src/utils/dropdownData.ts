@@ -23,9 +23,17 @@ export interface MXDropdownData {
   totalScenarios: number;
 }
 
+export interface ReframeDropdownData {
+  transformationTypes: MessageTypeOption[];
+  scenariosByType: Record<string, DropdownOption[]>;
+  totalTypes: number;
+  totalScenarios: number;
+}
+
 // Cache for loaded data
 let swiftMTCache: SwiftMTDropdownData | null = null;
 let mxCache: MXDropdownData | null = null;
+let reframeCache: ReframeDropdownData | null = null;
 
 /**
  * Load Swift MT dropdown data
@@ -129,4 +137,56 @@ export async function getMXDescription(messageType: string): Promise<string | un
   const data = await loadMXDropdown();
   const msgType = data.messageTypes.find(mt => mt.value === messageType);
   return msgType?.description;
+}
+
+/**
+ * Load Reframe transformation dropdown data
+ */
+export async function loadReframeDropdown(): Promise<ReframeDropdownData> {
+  if (reframeCache) {
+    return reframeCache;
+  }
+
+  try {
+    const response = await fetch('/data/reframe_dropdown.json');
+    if (!response.ok) {
+      throw new Error(`Failed to load Reframe dropdown data: ${response.statusText}`);
+    }
+    reframeCache = await response.json();
+    return reframeCache!;
+  } catch (error) {
+    console.error('Error loading Reframe dropdown data:', error);
+    // Return empty structure as fallback
+    return {
+      transformationTypes: [],
+      scenariosByType: {},
+      totalTypes: 0,
+      totalScenarios: 0
+    };
+  }
+}
+
+/**
+ * Get Reframe transformation types for dropdown
+ */
+export async function getReframeTransformationTypes(): Promise<MessageTypeOption[]> {
+  const data = await loadReframeDropdown();
+  return data.transformationTypes;
+}
+
+/**
+ * Get scenarios for a specific Reframe transformation type
+ */
+export async function getReframeScenarios(transformationType: string): Promise<DropdownOption[]> {
+  const data = await loadReframeDropdown();
+  return data.scenariosByType[transformationType] || [];
+}
+
+/**
+ * Get description for a Reframe transformation type
+ */
+export async function getReframeDescription(transformationType: string): Promise<string | undefined> {
+  const data = await loadReframeDropdown();
+  const transType = data.transformationTypes.find(tt => tt.value === transformationType);
+  return transType?.description;
 }

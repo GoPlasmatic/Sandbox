@@ -1,59 +1,15 @@
 {
-  "generated_at": "2025-08-11T10:41:19.414247",
+  "generated_at": "2025-08-29T18:38:06.472031",
   "statistics": {
-    "total_message_types": 38,
-    "total_scenarios": 330,
-    "swift_mt": {
-      "message_types": 24,
-      "scenarios": 169
-    },
-    "iso20022_mx": {
-      "message_types": 14,
-      "scenarios": 161
+    "total_transformation_types": 2,
+    "total_scenarios": 53,
+    "reframe_transformations": {
+      "transformation_types": 2,
+      "scenarios": 53
     }
   },
-  "message_types": {
-    "swift_mt": [
-      "MT101",
-      "MT103",
-      "MT104",
-      "MT107",
-      "MT110",
-      "MT111",
-      "MT112",
-      "MT192",
-      "MT196",
-      "MT199",
-      "MT202",
-      "MT205",
-      "MT210",
-      "MT292",
-      "MT296",
-      "MT299",
-      "MT900",
-      "MT910",
-      "MT920",
-      "MT935",
-      "MT940",
-      "MT941",
-      "MT942",
-      "MT950"
-    ],
-    "iso20022_mx": [
-      "camt.025",
-      "camt.029",
-      "camt.052",
-      "camt.053",
-      "camt.054",
-      "camt.056",
-      "camt.057",
-      "camt.060",
-      "pacs.002",
-      "pacs.003",
-      "pacs.008",
-      "pacs.009",
-      "pain.001",
-      "pain.008"
-    ]
-  }
+  "transformation_types": [
+    "forward",
+    "reverse"
+  ]
 }
