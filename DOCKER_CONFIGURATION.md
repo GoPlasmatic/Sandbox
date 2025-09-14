@@ -1,8 +1,10 @@
 # Docker Configuration Guide
 
+This guide provides instructions on how to configure the API endpoint for the Docusaurus application when using Docker.
+
 ## Setting the API URL
 
-The application uses the `REFRAME_API_URL` environment variable to configure the API endpoint. This must be set at **build time** when creating the Docker image.
+The application uses the `REFRAME_API_URL` environment variable to configure the API endpoint. This **must be set at build time** when creating the Docker image.
 
 ### Method 1: Using Docker Compose (Recommended)
 
