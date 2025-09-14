@@ -1,10 +1,10 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude code (claude.ai/code) when working with code in this repository.
 
 ## Repository Overview
 
-This is a Sandbox repository with a Docusaurus-based documentation website. Licensed under Apache License 2.0.
+This is a **Sandbox** repository with a Docusaurus-based documentation website. It is licensed under **Apache License 2.0**.
 
 ## Project Structure
 
@@ -21,7 +21,7 @@ This is a Sandbox repository with a Docusaurus-based documentation website. Lice
 
 ## Common Development Commands
 
-### Docusaurus Website (from `/website` directory)
+### Docusaurus Website Commands
 
 ```bash
 # Install dependencies

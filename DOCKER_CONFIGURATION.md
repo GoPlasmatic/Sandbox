@@ -1,10 +1,14 @@
 # Docker Configuration Guide
 
+This guide provides instructions on how to configure the API endpoint for the Docusaurus application when using Docker.
+
 ## Setting the API URL
 
-The application uses the `REFRAME_API_URL` environment variable to configure the API endpoint. This must be set at **build time** when creating the Docker image.
+The application uses the `REFRAME_API_URL` environment variable to set the API endpoint. This **must be set at build time** when creating the Docker image.
 
 ### Method 1: Using Docker Compose (Recommended)
+
+This is the preferred method for managing the API URL, as it integrates seamlessly with your development workflow.
 
 1. Create a `.env` file in the project root:
 ```bash
@@ -13,7 +17,7 @@ cp .env.example .env
 
 2. Edit the `.env` file and set your API URL:
 ```bash
-REFRAME_API_URL=https://your-api-server.com
+REFRAME_API_URL=https://your-api-server.comk
 ```
 
 3. Build and run with docker-compose:
@@ -22,6 +26,7 @@ docker-compose up --build
 ```
 
 The `--build` flag ensures the image is rebuilt with the new environment variable.
+**Note:** For security, ensure your .env file is added to your .gitignore to prevent it from being committed to version control.
 
 ### Method 2: Using Docker Build Command
 
@@ -58,17 +63,17 @@ docker-compose up
    docker-compose up
    ```
 
-3. **Default Value**: If `REFRAME_API_URL` is not set, it defaults to `http://localhost:3000`.
+3. **Default Value**: If `REFRAME_API_URL` is not set, it defaults to `http://localhost:3000`. This default is configured within the Dockerfile or the application's source code.
 
 ## Verifying the Configuration
 
 After building and running the container, you can verify the API URL is correctly configured:
 
-1. Open the application in your browser
-2. Open the browser's Developer Tools (F12)
-3. Go to the Network tab
-4. Perform any action that makes an API call
-5. Check that the requests are going to your configured API URL
+1. Open the application in your browser.
+2. Open the browser's Developer Tools (press **F12**).
+3. Go to the **Network** tab.
+4. Perform any action that makes an API call.
+5. Check that the requests are directed to your configured API URL.
 
 ## Troubleshooting
 
@@ -83,7 +88,7 @@ If the API URL doesn't seem to update after changing the environment variable:
    docker-compose up
    ```
 
-2. Clear your browser cache and hard reload (Ctrl+Shift+R or Cmd+Shift+R)
+2. Clear your browser cache and hard reload (Ctrl+Shift+R or Cmd+Shift+R).
 
 3. Verify the build argument is being passed correctly:
    ```bash
