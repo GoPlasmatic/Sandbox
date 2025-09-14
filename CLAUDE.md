@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude code (claude.ai/code) when working with code in this repository.
 
 ## Repository Overview
 
@@ -25,28 +25,28 @@ This is a **Sandbox** repository with a Docusaurus-based documentation website. 
 
 ```bash
 # Install dependencies
-npm install
+`npm install`
 
 # Start development server (http://localhost:3000)
-npm start
+`npm start`
 
 # Build for production
-npm run build
+`npm run build`
 
 # Serve production build locally
-npm run serve
+`npm run serve`
 
 # Clear cache
-npm run clear
+`npm run clear`
 
 # Deploy to GitHub Pages
-npm run deploy
+`npm run deploy`
 
 # Type checking
-npm run typecheck
+`npm run typecheck`
 
 # Create a new documentation version
-npm run docusaurus docs:version VERSION_NUMBER
+`npm run docusaurus docs:version VERSION_NUMBER`
 ```
 
 ## Development Workflow
