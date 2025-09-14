@@ -10,14 +10,16 @@ Reframe is the world's first completely transparent, open-source platform for hi
 
 ## Why Reframe?
 
-In the evolving world of financial messaging, clarity and control are non-negotiable. **Reframe** was built to provide a powerful, open-source alternative to proprietary, black-box solutions for SWIFT MT and ISO 20022 transformation. It's designed for financial institutions that demand **auditable logic**, **elite performance**, and **complete control** over their messaging workflows.
+In the evolving world of financial messaging, clarity and control are non-negotiable. Reframe was built to provide a powerful, open-source alternative to proprietary, black-box solutions for SWIFT MT and ISO 20022 transformation. It's designed for financial institutions that demand auditable logic, elite performance, and complete control over their messaging workflows.
 
 - **Full Transparency**: Say goodbye to black boxes. Every transformation rule is defined in human-readable JSON and is fully auditable.
 - **Blazing-Fast Performance**: Built in Rust, Reframe delivers sub-millisecond processing speeds, ensuring your operations are never bottlenecked.
 - **Total Configurability**: Define your own business logic and mappings with a simple yet powerful JSON-based configuration system.
-- **Extensible by Design**: A modular, pluggable architecture makes it easy to customize or extend Reframe to meet your specific needs.
+- **Extensible by Design**: Customize or extend Reframe to meet your specific needs using a modular, pluggable architecture.
 
 ## Key Features
+
+The key features include:
 
 ### Core Transformation Engine
 
@@ -40,7 +42,7 @@ In the evolving world of financial messaging, clarity and control are non-negoti
 - **Powerful Workflow Engine**: Backed by a sophisticated dataflow engine ([dataflow-rs](https://github.com/GoPlasmatic/dataflow-rs)) to model complex processing pipelines.
 - **Declarative Logic**: Utilizes [datalogic-rs](https://github.com/GoPlasmatic/datalogic-rs) to enable powerful and clear declarative logic for complex field mappings.
 
-## How Reframe Compares
+## Reframe verses Traditional Solutions
 
 | Feature              | Reframe                                       | Traditional Solutions                 |
 | -------------------- | --------------------------------------------- | ------------------------------------- |
@@ -55,32 +57,41 @@ In the evolving world of financial messaging, clarity and control are non-negoti
 
 ## Get Started in Minutes
 
+You can set up Reframe using the following methods: 
+
 ### With Docker (Recommended)
 
 The fastest way to get Reframe running.
 
-```bash
-# Pull the latest image from Docker Hub
-docker pull plasmatic/reframe:latest
+1. Pull the latest image from Docker Hub
+docker ```bash
+pull plasmatic/reframe:latest
+```.
 
-# Run the container and expose the API on port 3000
-docker run -p 3000:3000 plasmatic/reframe:latest
+3. Run the container and expose the API on port 3000
+docker run ```bash
+-p 3000:3000 plasmatic/reframe:latest
+```.
+The API is now live and waiting for requests at `http://localhost:3000`.
 
-# The API is now live and waiting for requests at http://localhost:3000
-```
 
 ### From Source
 For developers who want to build from the ground up.
 
-```bash
-# 1. Clone the repository
+
+1. Clone the repository.
+```bash  
 git clone https://github.com/GoPlasmatic/Reframe.git
 cd Reframe
+```
 
-# 2. Build the project in release mode (optimized for performance)
+2. Build the project in release mode (optimized for performance).
+```bash
 cargo build --release
+```
 
-# 3. Run the application
+3. Run the application.
+```bash
 ./target/release/reframe
 ```
 
