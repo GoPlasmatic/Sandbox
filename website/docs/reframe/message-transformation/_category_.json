@@ -3,6 +3,6 @@
   "position": 4,
   "link": {
     "type": "generated-index",
-    "description": "Transform messages between different formats"
+    "description": "Transform messages into different formats"
   }
 }
