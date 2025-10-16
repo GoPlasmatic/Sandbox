@@ -391,9 +391,8 @@ const ISO20022Generator: React.FC = () => {
 
     const requestBody = {
       message_type: selectedScenario.source, // Use source from scenario
-      config: {
-        scenario: scenario
-      }
+      scenario: scenario,
+      debug: false
     };
 
     const apiEndpoint = `${API_BASE_URL}${API_ENDPOINTS.GENERATE_SAMPLE}`;

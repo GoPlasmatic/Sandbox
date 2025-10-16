@@ -39,8 +39,7 @@ export const useApiBaseUrl = (siteConfig?: any): string => {
 };
 
 export const API_ENDPOINTS = {
-  GENERATE_SAMPLE: '/generate/sample',
-  VALIDATE: '/validate',
-  TRANSFORM_MT_TO_MX: '/transform/mt-to-mx',
-  TRANSFORM_MX_TO_MT: '/transform/mx-to-mt',
+  GENERATE_SAMPLE: '/api/generate',
+  VALIDATE: '/api/validate',
+  TRANSFORM: '/api/transform',
 };

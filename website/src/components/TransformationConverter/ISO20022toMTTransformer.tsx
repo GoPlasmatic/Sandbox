@@ -152,13 +152,11 @@ const ISO20022toMTTransformer: React.FC = () => {
 
     const requestBody = {
       message: inputMessage,
-      options: {
-        validation: includeValidation,
-        debug: includeDebug
-      }
+      validation: includeValidation,
+      debug: includeDebug
     };
 
-    const apiEndpoint = `${API_BASE_URL}/transform/mx-to-mt`;
+    const apiEndpoint = `${API_BASE_URL}${API_ENDPOINTS.TRANSFORM}`;
     
     setApiRequest(`POST ${apiEndpoint}
 Content-Type: application/json
@@ -338,9 +336,8 @@ ${JSON.stringify(requestBody, null, 2)}`);
       // Generate a sample message using the Reframe API
       const requestBody = {
         message_type: sourceType,
-        config: {
-          scenario: scenario
-        }
+        scenario: scenario,
+        debug: false
       };
 
       const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.GENERATE_SAMPLE}`, {

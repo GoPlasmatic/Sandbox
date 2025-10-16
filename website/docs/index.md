@@ -88,25 +88,25 @@ cargo build --release
 Use curl to send your first transformation request.
 
 ```bash
-# Example: Transform an MT103 to a pacs.008
-curl -X POST http://localhost:3000/transform/mt-to-mx \
+# Example: Transform an MT103 to a pacs.008 (unified endpoint auto-detects direction)
+curl -X POST http://localhost:3000/api/transform \
   -H "Content-Type: application/json" \
-  -d '{"message": "{1:F01BNPAFRPPXXX0000000000}{...}"}'
+  -d '{"message": "{1:F01BNPAFRPPXXX0000000000}{...}", "validation": true}'
 
-# Example: Transform a pacs.008 back to an MT103
-curl -X POST http://localhost:3000/transform/mx-to-mt \
+# Example: Transform a pacs.008 back to an MT103 (same endpoint, auto-detection)
+curl -X POST http://localhost:3000/api/transform \
   -H "Content-Type: application/json" \
-  -d '{"message": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Document>...</Document>"}'
+  -d '{"message": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Document>...</Document>", "validation": true}'
 
-# Example: Validate an MT message
-curl -X POST http://localhost:3000/validate/mt \
+# Example: Validate any message (MT or MX - auto-detected)
+curl -X POST http://localhost:3000/api/validate \
   -H "Content-Type: application/json" \
-  -d '{"message": "{1:F01BNPAFRPPXXX0000000000}{...}"}'
+  -d '{"message": "{1:F01BNPAFRPPXXX0000000000}{...}", "debug": true}'
 
 # Example: Generate sample messages
-curl -X POST http://localhost:3000/generate/sample \
+curl -X POST http://localhost:3000/api/generate \
   -H "Content-Type: application/json" \
-  -d '{"message_type": "MT103", "format": "mt"}'
+  -d '{"message_type": "MT103", "scenario": "standard", "debug": false}'
 
 # Example: Hot-reload workflows after a configuration change
 curl -X POST http://localhost:3000/admin/reload-workflows
@@ -116,11 +116,12 @@ curl -X POST http://localhost:3000/admin/reload-workflows
 
 Our vision is to make Reframe the undisputed backbone for financial messaging.
 
-### What's New (v3.0.9)
+### What's New (v3.1.3)
 
+- **Unified API Endpoints**: New streamlined API with `/api/generate`, `/api/validate`, and `/api/transform` for simplified integration.
 - **SR2025 Compliance**: Full compliance with SWIFT Release 2025 (November standards).
-- **Enhanced CBPR+ Support**: Advanced Cross-Border Payments and Reporting Plus capabilities.
-- **44+ Transformation Scenarios**: Comprehensive coverage of MT ↔ MX transformations.
+- **Enhanced CBPR+ Support**: Advanced Cross-Border Payments and Reporting Plus capabilities with 53+ transformation scenarios.
+- **Package-Based Architecture**: Modular package system for flexible scenario management.
 - **Performance Optimization**: Configurable threading and resource management for optimal throughput.
 - **Sample Generation**: AI-powered test data generation for all message types.
 - **Enhanced Validation**: Dedicated validation endpoints for MT and MX messages.

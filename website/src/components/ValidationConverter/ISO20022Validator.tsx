@@ -152,9 +152,8 @@ const ISO20022Validator: React.FC = () => {
 
     const requestBody = {
       message_type: selectedScenario.source, // Use source from scenario
-      config: {
-        scenario: scenario
-      }
+      scenario: scenario,
+      debug: false
     };
 
     try {
@@ -200,13 +199,10 @@ const ISO20022Validator: React.FC = () => {
 
     const requestBody = {
       message: inputMessage,
-      options: {
-        canonical: includeCanonical,
-        business_validation: includeBusinessValidation
-      }
+      debug: includeCanonical || includeBusinessValidation
     };
 
-    const apiEndpoint = `${API_BASE_URL}/validate/mx`;
+    const apiEndpoint = `${API_BASE_URL}${API_ENDPOINTS.VALIDATE}`;
     
     setApiRequest(`POST ${apiEndpoint}
 Content-Type: application/json

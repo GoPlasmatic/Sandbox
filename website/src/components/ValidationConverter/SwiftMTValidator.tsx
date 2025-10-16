@@ -94,9 +94,8 @@ const SwiftMTValidator: React.FC = () => {
 
     const requestBody = {
       message_type: selectedScenario.source, // Use source from scenario
-      config: {
-        scenario: scenario
-      }
+      scenario: scenario,
+      debug: false
     };
 
     try {
@@ -137,13 +136,10 @@ const SwiftMTValidator: React.FC = () => {
 
     const requestBody = {
       message: inputMessage,
-      options: {
-        canonical: includeCanonical,
-        business_validation: includeBusinessValidation
-      }
+      debug: includeCanonical || includeBusinessValidation
     };
 
-    const apiEndpoint = `${API_BASE_URL}/validate/mt`;
+    const apiEndpoint = `${API_BASE_URL}${API_ENDPOINTS.VALIDATE}`;
     
     setApiRequest(`POST ${apiEndpoint}
 Content-Type: application/json
@@ -183,7 +179,6 @@ ${JSON.stringify(requestBody, null, 2)}`);
     setInputMessage('');
     setValidationResult(null);
     setError('');
-    setMessageType('');
     setScenario('');
   };
 

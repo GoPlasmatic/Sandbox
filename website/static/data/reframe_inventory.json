@@ -10,7 +10,7 @@
         "scenarios": [
           {
             "id": "single_payment",
-            "file": "forward/mt101_to_pain001_cbpr_single.json",
+            "file": "outgoing/mt101_to_pain001_cbpr_single.json",
             "source": "MT101",
             "target": "pain.001",
             "description": "Single Payment Initiation (CBPR+ Compliant)",
@@ -18,7 +18,7 @@
           },
           {
             "id": "standard",
-            "file": "forward/mt103_to_pacs008_cbpr_standard.json",
+            "file": "outgoing/mt103_to_pacs008_cbpr_standard.json",
             "source": "MT103",
             "target": "pacs.008",
             "description": "Standard Cross-Border Payment",
@@ -26,7 +26,7 @@
           },
           {
             "id": "high_value",
-            "file": "forward/mt103_to_pacs008_cbpr_high_value.json",
+            "file": "outgoing/mt103_to_pacs008_cbpr_high_value.json",
             "source": "MT103",
             "target": "pacs.008",
             "description": "High Value Payment with Priority",
@@ -34,7 +34,7 @@
           },
           {
             "id": "remittance",
-            "file": "forward/mt103_to_pacs008_cbpr_remittance.json",
+            "file": "outgoing/mt103_to_pacs008_cbpr_remittance.json",
             "source": "MT103",
             "target": "pacs.008",
             "description": "Remittance with Enhanced Information",
@@ -42,7 +42,7 @@
           },
           {
             "id": "rejection",
-            "file": "forward/mt103rejt_to_pacs002_cbpr.json",
+            "file": "outgoing/mt103rejt_to_pacs002_cbpr.json",
             "source": "MT103",
             "target": "pacs.002",
             "description": "Payment Rejection Status Report",
@@ -50,7 +50,7 @@
           },
           {
             "id": "return",
-            "file": "forward/mt103retn_to_pacs004_cbpr.json",
+            "file": "outgoing/mt103retn_to_pacs004_cbpr.json",
             "source": "MT103",
             "target": "pacs.004",
             "description": "Payment Return",
@@ -58,7 +58,7 @@
           },
           {
             "id": "cancellation_request",
-            "file": "forward/mt192_to_camt056_cbpr_cancellation.json",
+            "file": "outgoing/mt192_to_camt056_cbpr_cancellation.json",
             "source": "MT192",
             "target": "camt.056",
             "description": "Customer Payment Cancellation Request",
@@ -66,7 +66,7 @@
           },
           {
             "id": "investigation_resolution",
-            "file": "forward/mt196_to_camt029_cbpr_customer_resolution.json",
+            "file": "outgoing/mt196_to_camt029_cbpr_customer_resolution.json",
             "source": "MT196",
             "target": "camt.029",
             "description": "Customer Investigation Resolution",
@@ -74,7 +74,7 @@
           },
           {
             "id": "own_account",
-            "file": "forward/mt200_to_pacs009_cbpr_own_account.json",
+            "file": "outgoing/mt200_to_pacs009_cbpr_own_account.json",
             "source": "MT200",
             "target": "pacs.009",
             "description": "Financial Institution Transfer for its Own Account",
@@ -82,7 +82,7 @@
           },
           {
             "id": "core",
-            "file": "forward/mt202_to_pacs009_cbpr_core.json",
+            "file": "outgoing/mt202_to_pacs009_cbpr_core.json",
             "source": "MT202",
             "target": "pacs.009",
             "description": "Core Financial Institution Transfer",
@@ -90,7 +90,7 @@
           },
           {
             "id": "cover",
-            "file": "forward/mt202cov_to_pacs009_cbpr_cover.json",
+            "file": "outgoing/mt202cov_to_pacs009_cbpr_cover.json",
             "source": "MT202",
             "target": "pacs.009",
             "description": "Cover Payment",
@@ -98,7 +98,7 @@
           },
           {
             "id": "fi_rejection",
-            "file": "forward/mt202rejt_to_pacs002_cbpr.json",
+            "file": "outgoing/mt202rejt_to_pacs002_cbpr.json",
             "source": "MT202",
             "target": "pacs.002",
             "description": "FI Transfer Rejection",
@@ -106,7 +106,7 @@
           },
           {
             "id": "fi_return",
-            "file": "forward/mt202retn_to_pacs004_cbpr.json",
+            "file": "outgoing/mt202retn_to_pacs004_cbpr.json",
             "source": "MT202",
             "target": "pacs.004",
             "description": "FI Transfer Return",
@@ -114,7 +114,7 @@
           },
           {
             "id": "serial",
-            "file": "forward/mt205_to_pacs009_cbpr_serial.json",
+            "file": "outgoing/mt205_to_pacs009_cbpr_serial.json",
             "source": "MT205",
             "target": "pacs.009",
             "description": "Serial Financial Institution Transfer",
@@ -122,7 +122,7 @@
           },
           {
             "id": "serial_cover",
-            "file": "forward/mt205cov_to_pacs009_cbpr_serial_cover.json",
+            "file": "outgoing/mt205cov_to_pacs009_cbpr_serial_cover.json",
             "source": "MT205",
             "target": "pacs.009",
             "description": "Serial Cover Payment",
@@ -130,7 +130,7 @@
           },
           {
             "id": "serial_rejection",
-            "file": "forward/mt205rejt_to_pacs002_cbpr.json",
+            "file": "outgoing/mt205rejt_to_pacs002_cbpr.json",
             "source": "MT205",
             "target": "pacs.002",
             "description": "Serial FI Transfer Rejection",
@@ -138,7 +138,7 @@
           },
           {
             "id": "serial_return",
-            "file": "forward/mt205retn_to_pacs004_cbpr.json",
+            "file": "outgoing/mt205retn_to_pacs004_cbpr.json",
             "source": "MT205",
             "target": "pacs.004",
             "description": "Serial FI Transfer Return",
@@ -146,7 +146,7 @@
           },
           {
             "id": "fi_cancellation",
-            "file": "forward/mt292_to_camt056_cbpr_fi_cancellation.json",
+            "file": "outgoing/mt292_to_camt056_cbpr_fi_cancellation.json",
             "source": "MT292",
             "target": "camt.056",
             "description": "FI Payment Cancellation Request",
@@ -154,7 +154,7 @@
           },
           {
             "id": "fi_resolution",
-            "file": "forward/mt296_to_camt029_cbpr_fi_resolution.json",
+            "file": "outgoing/mt296_to_camt029_cbpr_fi_resolution.json",
             "source": "MT296",
             "target": "camt.029",
             "description": "FI Investigation Resolution",
@@ -162,7 +162,7 @@
           },
           {
             "id": "debit",
-            "file": "forward/mt900_to_camt054_cbpr_debit.json",
+            "file": "outgoing/mt900_to_camt054_cbpr_debit.json",
             "source": "MT900",
             "target": "camt.054",
             "description": "Confirmation of Debit",
@@ -170,7 +170,7 @@
           },
           {
             "id": "credit",
-            "file": "forward/mt910_to_camt054_cbpr_credit.json",
+            "file": "outgoing/mt910_to_camt054_cbpr_credit.json",
             "source": "MT910",
             "target": "camt.054",
             "description": "Confirmation of Credit",
@@ -184,7 +184,7 @@
         "scenarios": [
           {
             "id": "rejection",
-            "file": "reverse/pacs002_to_mt103rejt_cbpr.json",
+            "file": "incoming/pacs002_to_mt103rejt_cbpr.json",
             "source": "pacs.002",
             "target": "MT103REJT",
             "description": "Payment Status Report Rejection",
@@ -192,7 +192,7 @@
           },
           {
             "id": "customer_return",
-            "file": "reverse/pacs004_to_mt103retn_cbpr.json",
+            "file": "incoming/pacs004_to_mt103retn_cbpr.json",
             "source": "pacs.004",
             "target": "MT103RETN",
             "description": "Payment Return",
@@ -200,7 +200,7 @@
           },
           {
             "id": "fi_return",
-            "file": "reverse/pacs004_to_mt202retn_cbpr.json",
+            "file": "incoming/pacs004_to_mt202retn_cbpr.json",
             "source": "pacs.004",
             "target": "MT202RETN",
             "description": "FI Payment Return",
@@ -208,7 +208,7 @@
           },
           {
             "id": "serial_return",
-            "file": "reverse/pacs004_to_mt205retn_cbpr.json",
+            "file": "incoming/pacs004_to_mt205retn_cbpr.json",
             "source": "pacs.004",
             "target": "MT205RETN",
             "description": "Serial FI Payment Return",
@@ -216,7 +216,7 @@
           },
           {
             "id": "standard",
-            "file": "reverse/pacs008_to_mt103_cbpr_standard.json",
+            "file": "incoming/pacs008_to_mt103_cbpr_standard.json",
             "source": "pacs.008",
             "target": "MT103",
             "description": "Standard Customer Credit Transfer",
@@ -224,7 +224,7 @@
           },
           {
             "id": "stp",
-            "file": "reverse/pacs008_to_mt103_cbpr_stp.json",
+            "file": "incoming/pacs008_to_mt103_cbpr_stp.json",
             "source": "pacs.008",
             "target": "MT103",
             "description": "STP Compliant Transfer",
@@ -232,7 +232,7 @@
           },
           {
             "id": "core",
-            "file": "reverse/pacs009_to_mt202_cbpr_core.json",
+            "file": "incoming/pacs009_to_mt202_cbpr_core.json",
             "source": "pacs.009",
             "target": "MT202",
             "description": "Financial Institution Transfer",
@@ -240,7 +240,7 @@
           },
           {
             "id": "cover",
-            "file": "reverse/pacs009_to_mt202cov_cbpr_cover.json",
+            "file": "incoming/pacs009_to_mt202cov_cbpr_cover.json",
             "source": "pacs.009",
             "target": "MT202COV",
             "description": "Cover Payment",
@@ -248,7 +248,7 @@
           },
           {
             "id": "advice",
-            "file": "reverse/pacs009_to_mt202adv_cbpr.json",
+            "file": "incoming/pacs009_to_mt202adv_cbpr.json",
             "source": "pacs.009",
             "target": "MT202",
             "description": "Advice Variant",
@@ -256,7 +256,7 @@
           },
           {
             "id": "serial",
-            "file": "reverse/pacs009_to_mt205_cbpr_serial.json",
+            "file": "incoming/pacs009_to_mt205_cbpr_serial.json",
             "source": "pacs.009",
             "target": "MT205",
             "description": "Serial FI Transfer",
@@ -264,7 +264,7 @@
           },
           {
             "id": "serial_cover",
-            "file": "reverse/pacs009_to_mt205cov_cbpr_serial_cover.json",
+            "file": "incoming/pacs009_to_mt205cov_cbpr_serial_cover.json",
             "source": "pacs.009",
             "target": "MT205COV",
             "description": "Serial Cover Payment",
@@ -272,7 +272,7 @@
           },
           {
             "id": "interim_report",
-            "file": "reverse/camt052_to_mt942_cbpr.json",
+            "file": "incoming/camt052_to_mt942_cbpr.json",
             "source": "camt.052",
             "target": "MT942",
             "description": "Interim Transaction Report",
@@ -280,7 +280,7 @@
           },
           {
             "id": "statement",
-            "file": "reverse/camt053_to_mt940_cbpr.json",
+            "file": "incoming/camt053_to_mt940_cbpr.json",
             "source": "camt.053",
             "target": "MT940",
             "description": "Bank to Customer Statement",
@@ -288,7 +288,7 @@
           },
           {
             "id": "cheque_collection",
-            "file": "reverse/camt107_to_mt110_cbpr.json",
+            "file": "incoming/camt107_to_mt110_cbpr.json",
             "source": "camt.107",
             "target": "MT110",
             "description": "Advice of Cheque Collection",
@@ -296,7 +296,7 @@
           },
           {
             "id": "margin_collection",
-            "file": "reverse/pacs010_to_mt204_cbpr_mc.json",
+            "file": "incoming/pacs010_to_mt204_cbpr_mc.json",
             "source": "pacs.010",
             "target": "MT204",
             "description": "Margin Collection Direct Debit",
@@ -304,7 +304,7 @@
           },
           {
             "id": "stop_cheque",
-            "file": "reverse/camt108_to_mt111_cbpr.json",
+            "file": "incoming/camt108_to_mt111_cbpr.json",
             "source": "camt.108",
             "target": "MT111",
             "description": "Stop of Cheque",
@@ -312,7 +312,7 @@
           },
           {
             "id": "stop_cheque_status",
-            "file": "reverse/camt109_to_mt112_cbpr.json",
+            "file": "incoming/camt109_to_mt112_cbpr.json",
             "source": "camt.109",
             "target": "MT112",
             "description": "Status of Request for Stop of Cheque",
@@ -320,7 +320,7 @@
           },
           {
             "id": "system_notification",
-            "file": "reverse/admi024_to_mt199_cbpr.json",
+            "file": "incoming/admi024_to_mt199_cbpr.json",
             "source": "admi.024",
             "target": "MT199",
             "description": "System Event Notification",
@@ -328,7 +328,7 @@
           },
           {
             "id": "cancellation_response_customer",
-            "file": "reverse/camt029_to_mt196_cbpr.json",
+            "file": "incoming/camt029_to_mt196_cbpr.json",
             "source": "camt.029",
             "target": "MT196",
             "description": "Customer Payment Cancellation Response",
@@ -336,7 +336,7 @@
           },
           {
             "id": "cancellation_response_fi",
-            "file": "reverse/camt029_to_mt296_cbpr.json",
+            "file": "incoming/camt029_to_mt296_cbpr.json",
             "source": "camt.029",
             "target": "MT296",
             "description": "FI Payment Cancellation Response",
@@ -344,7 +344,7 @@
           },
           {
             "id": "customer_notification",
-            "file": "reverse/camt054_to_mt103_cbpr.json",
+            "file": "incoming/camt054_to_mt103_cbpr.json",
             "source": "camt.054",
             "target": "MT103",
             "description": "Customer Credit Notification",
@@ -352,7 +352,7 @@
           },
           {
             "id": "debit_confirmation",
-            "file": "reverse/camt054_to_mt900_cbpr.json",
+            "file": "incoming/camt054_to_mt900_cbpr.json",
             "source": "camt.054",
             "target": "MT900",
             "description": "Confirmation of Debit",
@@ -360,7 +360,7 @@
           },
           {
             "id": "credit_confirmation",
-            "file": "reverse/camt054_to_mt910_cbpr.json",
+            "file": "incoming/camt054_to_mt910_cbpr.json",
             "source": "camt.054",
             "target": "MT910",
             "description": "Confirmation of Credit",
@@ -368,7 +368,7 @@
           },
           {
             "id": "bank_notification",
-            "file": "reverse/camt054_to_mt202_cbpr.json",
+            "file": "incoming/camt054_to_mt202_cbpr.json",
             "source": "camt.054",
             "target": "MT202",
             "description": "Bank-to-Bank Notification",
@@ -376,7 +376,7 @@
           },
           {
             "id": "cancellation_request",
-            "file": "reverse/camt056_to_mt192_cbpr.json",
+            "file": "incoming/camt056_to_mt192_cbpr.json",
             "source": "camt.056",
             "target": "MT192",
             "description": "Payment Cancellation Request",
@@ -384,7 +384,7 @@
           },
           {
             "id": "notification_to_receive",
-            "file": "reverse/camt057_to_mt210_cbpr.json",
+            "file": "incoming/camt057_to_mt210_cbpr.json",
             "source": "camt.057",
             "target": "MT210",
             "description": "Notification To Receive",
@@ -392,7 +392,7 @@
           },
           {
             "id": "cancellation_advice",
-            "file": "reverse/camt058_to_mt292_cbpr.json",
+            "file": "incoming/camt058_to_mt292_cbpr.json",
             "source": "camt.058",
             "target": "MT292",
             "description": "Notification to Receive Cancellation Advice",
@@ -400,7 +400,7 @@
           },
           {
             "id": "charges_payment_notification",
-            "file": "reverse/camt105_to_mtn90_cbpr.json",
+            "file": "incoming/camt105_to_mtn90_cbpr.json",
             "source": "camt.105",
             "target": "MTn90",
             "description": "Charges Payment Notification",
@@ -408,7 +408,7 @@
           },
           {
             "id": "customer_charges_request",
-            "file": "reverse/camt106_to_mt191_cbpr.json",
+            "file": "incoming/camt106_to_mt191_cbpr.json",
             "source": "camt.106",
             "target": "MT191",
             "description": "Request for Payment of Charges (Customer)",
@@ -416,7 +416,7 @@
           },
           {
             "id": "fi_charges_request",
-            "file": "reverse/camt106_to_mt291_cbpr.json",
+            "file": "incoming/camt106_to_mt291_cbpr.json",
             "source": "camt.106",
             "target": "MT291",
             "description": "Request for Payment of Charges (FI)",
@@ -424,7 +424,7 @@
           },
           {
             "id": "direct_debit",
-            "file": "reverse/pacs003_to_mt104_cbpr.json",
+            "file": "incoming/pacs003_to_mt104_cbpr.json",
             "source": "pacs.003",
             "target": "MT104",
             "description": "Direct Debit Transaction",
@@ -432,7 +432,7 @@
           },
           {
             "id": "payment_initiation",
-            "file": "reverse/pain001_to_mt101_cbpr.json",
+            "file": "incoming/pain001_to_mt101_cbpr.json",
             "source": "pain.001",
             "target": "MT101",
             "description": "Customer Credit Transfer Initiation",

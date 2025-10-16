@@ -44,7 +44,7 @@ def format_display_name(name):
 
 def generate_reframe_transformation_data():
     """Generate Reframe transformation scenarios data from index.json"""
-    base_path = '/Users/codetiger/Development/Plasmatic/Reframe/scenarios'
+    base_path = '/Users/codetiger/Development/Plasmatic/reframe-package-swift-cbpr/scenarios'
     index_file = os.path.join(base_path, 'index.json')
     
     # Simple structure for dropdown components
@@ -75,28 +75,28 @@ def generate_reframe_transformation_data():
         with open(index_file, 'r') as f:
             index_data = json.load(f)
         
-        # Process forward transformations
-        if 'forward' in index_data:
+        # Process forward transformations (outgoing: MT to MX)
+        if 'outgoing' in index_data:
             dropdown_data['transformationTypes'].append({
                 'value': 'forward',
                 'label': 'Forward (MT to MX)',
                 'description': 'Swift MT to ISO 20022 MX transformations'
             })
-            
+
             forward_dropdown = []
             forward_full = []
-            
-            for scenario in index_data['forward']:
+
+            for scenario in index_data['outgoing']:
                 # Create a simplified label without target format
                 display_label = f"{scenario['source']}: {scenario['description']}"
-                
+
                 forward_dropdown.append({
                     'value': scenario['id'],
                     'label': display_label,
                     'source': scenario['source'],
                     'target': scenario['target']
                 })
-                
+
                 forward_full.append({
                     'id': scenario['id'],
                     'file': scenario['file'],
@@ -105,7 +105,7 @@ def generate_reframe_transformation_data():
                     'description': scenario['description'],
                     'display_name': display_label
                 })
-            
+
             dropdown_data['scenariosByType']['forward'] = forward_dropdown
             full_inventory['reframe_transformations']['transformation_types']['forward'] = {
                 'description': 'Swift MT to ISO 20022 MX transformations',
@@ -113,28 +113,28 @@ def generate_reframe_transformation_data():
                 'scenarios': forward_full
             }
         
-        # Process reverse transformations
-        if 'reverse' in index_data:
+        # Process reverse transformations (incoming: MX to MT)
+        if 'incoming' in index_data:
             dropdown_data['transformationTypes'].append({
                 'value': 'reverse',
                 'label': 'Reverse (MX to MT)',
                 'description': 'ISO 20022 MX to Swift MT transformations'
             })
-            
+
             reverse_dropdown = []
             reverse_full = []
-            
-            for scenario in index_data['reverse']:
+
+            for scenario in index_data['incoming']:
                 # Create a simplified label without target format
                 display_label = f"{scenario['source']}: {scenario['description']}"
-                
+
                 reverse_dropdown.append({
                     'value': scenario['id'],
                     'label': display_label,
                     'source': scenario['source'],
                     'target': scenario['target']
                 })
-                
+
                 reverse_full.append({
                     'id': scenario['id'],
                     'file': scenario['file'],
@@ -143,7 +143,7 @@ def generate_reframe_transformation_data():
                     'description': scenario['description'],
                     'display_name': display_label
                 })
-            
+
             dropdown_data['scenariosByType']['reverse'] = reverse_dropdown
             full_inventory['reframe_transformations']['transformation_types']['reverse'] = {
                 'description': 'ISO 20022 MX to Swift MT transformations',
