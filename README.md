@@ -1,9 +1,11 @@
 # Sandbox
 
 ## Quick Start
+This guide provides the fastest way to get the Sandbox application up and running.
 
 ### Using Docker
 
+Follow these steps to build and run the application using Docker Compose.
 1. Set your API URL in a `.env` file:
 ```bash
 cp .env.example .env
@@ -21,4 +23,4 @@ For detailed Docker configuration instructions, see [DOCKER_CONFIGURATION.md](./
 
 ### Local Development
 
-See the [website README](./website/README.md) for local development instructions.
+For instructions on setting up the project for local development, see the [website README](./website/README.md).
