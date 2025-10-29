@@ -6,32 +6,41 @@ sidebar_position: 1
 
 **An Enterprise-Grade, Bidirectional SWIFT MT ↔ ISO 20022 Transformation Engine**
 
-Reframe is the world's first completely transparent, open-source platform for high-performance SWIFT message transformation.
+Reframe is the world's first completely transparent, open-source platform for high-performance SWIFT message transformation. In the evolving world of financial messaging, clarity and control are non-negotiable. Reframe provides a powerful, open-source alternative to proprietary, black-box solutions for SWIFT MT and ISO 20022 transformation. It's designed for financial institutions that demand auditable logic, elite performance, and complete control over their messaging workflows.
 
-## Why Reframe?
+Reframe is designed to be:
 
-In the evolving world of financial messaging, clarity and control are non-negotiable. **Reframe** was built to provide a powerful, open-source alternative to proprietary, black-box solutions for SWIFT MT and ISO 20022 transformation. It's designed for financial institutions that demand **auditable logic**, **elite performance**, and **complete control** over their messaging workflows.
+- **Transparent**: Say goodbye to black boxes. Every transformation rule is defined in human-readable JSON and is fully auditable.
+- **Performant**: Built in Rust, it delivers sub-millisecond processing speeds, ensuring your operations are never bottlenecked.
+- **Configurable**: Define your business logic and mappings with a JSON-based configuration system.
+- **Extensible**: Customize or extend Reframe with a modular, pluggable architecture to meet your specific needs.
 
-- **Full Transparency**: Say goodbye to black boxes. Every transformation rule is defined in human-readable JSON and is fully auditable.
-- **Blazing-Fast Performance**: Built in Rust, Reframe delivers sub-millisecond processing speeds, ensuring your operations are never bottlenecked.
-- **Total Configurability**: Define your own business logic and mappings with a simple yet powerful JSON-based configuration system.
-- **Extensible by Design**: A modular, pluggable architecture makes it easy to customize or extend Reframe to meet your specific needs.
+# Security & Compliance
+
+Reframe is built with the stringent requirements of financial institutions in mind.
+
+- **Secure by Design**: Follows security best practices from the ground up.
+- **Compliance-Ready**: Supports environments requiring PCI, SOX, and Basel III compliance.
+- **Full Audit Trail**: Provides complete logging and traceability for every transformation.
+- **Proactive Security**: Monitors vulnerabilities actively and provides regular security updates.
 
 ## Key Features
 
+They key features include:
+
 ### Core Transformation Engine
 
-- **True Bidirectional Processing**: Seamlessly transform messages both ways:
+- **True Bidirectional Processing**: Transforms messages seamlessly both ways:
   - **Forward**: SWIFT MT → ISO 20022 (MX)
   - **Reverse**: ISO 20022 (MX) → SWIFT MT
-- **Comprehensive Message Support**: 44+ pre-configured transformation scenarios covering payments, cash management, status reporting, and administrative messages.
-- **Intelligent Routing**: Automatic message type detection and routing to the correct transformation workflow.
+- **Comprehensive Message Support**: Includes 44+ pre-configured transformation scenarios covering payments, cash management, status reporting, and administrative messages.
+- **Intelligent Routing**: Detects message type automatically and routes to the correct transformation workflow.
 
-### Built for the Enterprise
+### Built for Enterprise
 
 - **High Availability**: A stateless, container-native architecture allows for effortless horizontal scaling.
-- **Zero-Downtime Updates**: Hot-reload configurations and workflows on the fly via an API endpoint, no service restarts required.
-- **Production-Ready**: Comes with comprehensive error handling, monitoring, and observability baked in.
+- **Zero-Downtime Updates**: Hot-reload configurations and workflows on the fly via an API endpoint—no service restarts required.
+- **Production-Ready**: Comes with comprehensive error handling, monitoring, and observability.
 - **Simple Deployment**: Ships as a single, lightweight Docker image for easy deployment in any environment.
 
 ### Unmatched Transparency & Control
@@ -40,12 +49,12 @@ In the evolving world of financial messaging, clarity and control are non-negoti
 - **Powerful Workflow Engine**: Backed by a sophisticated dataflow engine ([dataflow-rs](https://github.com/GoPlasmatic/dataflow-rs)) to model complex processing pipelines.
 - **Declarative Logic**: Utilizes [datalogic-rs](https://github.com/GoPlasmatic/datalogic-rs) to enable powerful and clear declarative logic for complex field mappings.
 
-## How Reframe Compares
+## Reframe verses Traditional Solutions
 
 | Feature              | Reframe                                       | Traditional Solutions                 |
 | -------------------- | --------------------------------------------- | ------------------------------------- |
 | **Transparency** | ✅ Open source with 100% auditable JSON rules | ❌ Proprietary, black-box logic       |
-| **Transformation** | ✅ Fully bidirectional (MT ↔ MX)              | ❌ Often one-way or limited reverse   |
+| **Transformation** | ✅ Bidirectional (MT ↔ MX)              | ❌ Often one-way or limited reverse   |
 | **Performance** | ✅ Rust-powered (sub-millisecond)             | ❌ Slower, often JVM-based            |
 | **Configuration** | ✅ Hot-reloadable JSON, no downtime           | ❌ Requires vendor intervention       |
 | **License** | ✅ Apache 2.0 (Free to use and modify)        | ❌ Expensive, restrictive licensing   |
@@ -53,38 +62,41 @@ In the evolving world of financial messaging, clarity and control are non-negoti
 | **SR2025 Compliance** | ✅ Full compliance with November 2025 release | ❌ Limited or delayed support         |
 | **CBPR+ Support** | ✅ Enhanced CBPR+ capabilities                | ❌ Basic or partial implementation    |
 
-## Get Started in Minutes
+## Getting Started
 
-### With Docker (Recommended)
+You can get started in the following ways:
 
-The fastest way to get Reframe running.
+### With Docker
+
+This is the fastest and recommended way to get Reframe running.
 
 ```bash
-# Pull the latest image from Docker Hub
+1. Pull the latest image from Docker Hub
 docker pull plasmatic/reframe:latest
 
-# Run the container and expose the API on port 3000
+2. Run the container and expose the API on port 3000
 docker run -p 3000:3000 plasmatic/reframe:latest
-
-# The API is now live and waiting for requests at http://localhost:3000
+The API is now live and waiting for requests at http://localhost:3000
 ```
 
 ### From Source
-For developers who want to build from the ground up.
+
+Developers building from the ground up can use this method.
 
 ```bash
-# 1. Clone the repository
+1. Clone the repository
 git clone https://github.com/GoPlasmatic/Reframe.git
 cd Reframe
 
-# 2. Build the project in release mode (optimized for performance)
+2. Build the project in release mode (optimized for performance)
 cargo build --release
 
-# 3. Run the application
+3. Run the application
 ./target/release/reframe
 ```
 
-### Try It Now
+### Try Now
+
 Use curl to send your first transformation request.
 
 ```bash
@@ -128,18 +140,10 @@ Our vision is to make Reframe the undisputed backbone for financial messaging.
 - **OpenAPI Documentation**: Auto-generated API documentation with Swagger UI.
 - **Dual-Engine Architecture**: Optimized forward and reverse transformation engines.
 
-## Security & Compliance
-
-We built Reframe with the stringent requirements of financial institutions in mind.
-
-- **Secure by Design**: Follows security best practices from the ground up.
-- **Compliance-Ready**: Architected to support environments requiring PCI, SOX, and Basel III compliance.
-- **Full Audit Trail**: Provides complete logging and traceability for every transformation.
-- **Proactive Security**: We actively monitor for vulnerabilities and provide regular security updates.
 
 ## License
 
-Reframe is licensed under the Apache License, Version 2.0. You are free to use, modify, and distribute it. See [LICENSE](LICENSE) for more details.
+Reframe is licensed under the Apache License, Version 2.0. You are free to use, modify, and distribute it. For more details, see [LICENSE](LICENSE).
 
 ---
 
