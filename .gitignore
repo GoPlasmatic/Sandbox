@@ -53,5 +53,3 @@ __pycache__/
 venv/
 ENV/
 
-# Docker
-.docker/

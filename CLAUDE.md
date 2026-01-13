@@ -69,7 +69,7 @@ rm -rf book/
 
 ## Deployment
 
-Documentation is deployed via Docker on VM. Build the static site with:
+Build the static site with:
 ```bash
 cd docs
 mdbook build

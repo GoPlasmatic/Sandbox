@@ -36,7 +36,7 @@ Your preference is stored in browser local storage.
 Start Reframe locally:
 
 ```bash
-docker run -p 3000:3000 ghcr.io/goplasmatic/reframe:latest
+docker run -p 3000:3000 plasmatic/reframe:latest
 ```
 
 Then configure the playground to use `http://localhost:3000`.

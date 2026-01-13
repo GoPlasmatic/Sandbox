@@ -222,12 +222,12 @@ Integrate Reframe into your development pipeline with Docker and standard CI/CD 
 # GitHub Actions example
 services:
   reframe:
-    image: ghcr.io/goplasmatic/reframe:latest
+    image: plasmatic/reframe:latest
     ports:
       - 3000:3000
 ```
 
-For full deployment configurations, see **[Docker Deployment →](../deployment/docker.md)**
+For full deployment configurations, see **[Kubernetes Deployment →](../deployment/kubernetes.md)**
 
 ---
 

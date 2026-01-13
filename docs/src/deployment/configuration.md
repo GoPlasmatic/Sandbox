@@ -216,7 +216,7 @@ docker run \
   -e REFRAME_PORT=8080 \
   -e RUST_LOG=debug \
   -e TOKIO_WORKER_THREADS=8 \
-  ghcr.io/goplasmatic/reframe:latest
+  plasmatic/reframe:latest
 ```
 
 ### Configuration File Mount
@@ -224,7 +224,7 @@ docker run \
 ```bash
 docker run \
   -v /path/to/reframe.config.json:/app/reframe.config.json \
-  ghcr.io/goplasmatic/reframe:latest
+  plasmatic/reframe:latest
 ```
 
 ## Kubernetes Configuration
@@ -276,7 +276,5 @@ Reframe validates configuration on startup:
 Invalid configuration causes startup failure with clear error messages.
 
 ---
-
-**[Docker Deployment →](./docker.md)**
 
 **[Kubernetes Deployment →](./kubernetes.md)**

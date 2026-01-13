@@ -13,7 +13,7 @@ Get the open source SWIFT MT to ISO 20022 transformation engine running locally.
 
 ```bash
 # Pull and run Reframe
-docker run -d -p 3000:3000 --name reframe ghcr.io/goplasmatic/reframe:latest
+docker run -d -p 3000:3000 --name reframe plasmatic/reframe:latest
 
 # Verify it's running
 curl http://localhost:3000/health
@@ -88,9 +88,6 @@ The playground lets you:
 **[First Transformation Tutorial →](./first-transformation.md)**
 Step-by-step guide to understanding MT103 → pacs.008 transformation
 
-**[Docker Setup →](./docker-setup.md)**
-Production Docker configuration
-
 **[CBPR+ Guide →](../cbpr-plus/overview.md)**
 Explore all supported message types
 
@@ -108,7 +105,7 @@ Complete API documentation
 lsof -i :3000
 
 # Use a different port
-docker run -p 8080:3000 ghcr.io/goplasmatic/reframe:latest
+docker run -p 8080:3000 plasmatic/reframe:latest
 ```
 
 ### Container Not Starting
@@ -118,7 +115,7 @@ docker run -p 8080:3000 ghcr.io/goplasmatic/reframe:latest
 docker logs reframe
 
 # Run in foreground for debugging
-docker run -p 3000:3000 ghcr.io/goplasmatic/reframe:latest
+docker run -p 3000:3000 plasmatic/reframe:latest
 ```
 
 ### Connection Refused

@@ -52,7 +52,7 @@ Common questions about Reframe, the open source SWIFT MT to ISO 20022 transforma
       "name": "How do I get started with Reframe?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You can get started in under 5 minutes using Docker. Simply run 'docker run -p 3000:3000 ghcr.io/goplasmatic/reframe:latest' and access the API at http://localhost:3000. See the Quick Start guide for detailed instructions."
+        "text": "You can get started in under 5 minutes using Docker. Simply run 'docker run -p 3000:3000 plasmatic/reframe:latest' and access the API at http://localhost:3000. See the Quick Start guide for detailed instructions."
       }
     },
     {
@@ -155,7 +155,7 @@ Get started in **under 5 minutes** using Docker:
 
 ```bash
 # Pull and run Reframe
-docker run -d -p 3000:3000 ghcr.io/goplasmatic/reframe:latest
+docker run -d -p 3000:3000 plasmatic/reframe:latest
 
 # Test the API
 curl http://localhost:3000/health
@@ -193,7 +193,7 @@ Or try the interactive playground without any installation:
 - **High performance** - Thousands of messages/second
 - **Audit trails** - Full transformation logging
 
-**[Deployment guide →](./deployment/docker.md)**
+**[Deployment guide →](./deployment/kubernetes.md)**
 
 ---
 

@@ -56,7 +56,7 @@ Mount your package directory and iterate without restarts:
 # docker-compose.yml
 services:
   reframe:
-    image: ghcr.io/goplasmatic/reframe:latest
+    image: plasmatic/reframe:latest
     volumes:
       - ./my-package:/packages/custom
 ```
@@ -107,6 +107,5 @@ The health endpoint shows package info:
 
 - **[Admin API Reference](../api-reference/admin-api.md)** - Complete admin API documentation
 - **[Packages and Rules](../concepts/packages-and-rules.md)** - How transformation rules are organized
-- **[Docker Deployment](../deployment/docker.md)** - Production Docker setup
 - **[Configuration Reference](../deployment/configuration.md)** - Environment variables and settings
 - **[Monitoring](../deployment/monitoring.md)** - Health checks and observability

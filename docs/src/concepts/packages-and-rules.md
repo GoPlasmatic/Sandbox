@@ -242,7 +242,7 @@ export REFRAME_PACKAGE_PATH=/path/to/packages
 ```yaml
 services:
   reframe:
-    image: ghcr.io/goplasmatic/reframe:latest
+    image: plasmatic/reframe:latest
     volumes:
       - ./my-package:/packages/my-package
     environment:

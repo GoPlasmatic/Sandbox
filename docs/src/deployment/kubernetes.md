@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: reframe
-        image: ghcr.io/goplasmatic/reframe:3.1.8
+        image: plasmatic/reframe:3.1.8
         ports:
         - containerPort: 3000
         env:
@@ -268,7 +268,7 @@ spec:
 replicaCount: 3
 
 image:
-  repository: ghcr.io/goplasmatic/reframe
+  repository: plasmatic/reframe
   tag: "3.1.8"
   pullPolicy: IfNotPresent
 
@@ -352,7 +352,7 @@ kubectl scale deployment reframe --replicas=5
 ### Rolling Update
 
 ```bash
-kubectl set image deployment/reframe reframe=ghcr.io/goplasmatic/reframe:3.2.0
+kubectl set image deployment/reframe reframe=plasmatic/reframe:3.2.0
 kubectl rollout status deployment/reframe
 ```
 
@@ -363,7 +363,5 @@ kubectl rollout undo deployment/reframe
 ```
 
 ---
-
-**[Docker Deployment →](./docker.md)**
 
 **[Configuration Reference →](./configuration.md)**

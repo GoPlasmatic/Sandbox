@@ -19,8 +19,8 @@ Reframe transforms any message format using auditable rules:
 
 ```bash
 # Quick start with Docker
-docker pull ghcr.io/goplasmatic/reframe:latest
-docker run -p 3000:3000 ghcr.io/goplasmatic/reframe:latest
+docker pull plasmatic/reframe:latest
+docker run -p 3000:3000 plasmatic/reframe:latest
 ```
 
 ---

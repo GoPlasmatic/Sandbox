@@ -22,7 +22,6 @@
 # Getting Started
 
 - [Quick Start](./getting-started/quick-start.md)
-- [Docker Setup](./getting-started/docker-setup.md)
 - [First Transformation](./getting-started/first-transformation.md)
 
 # CBPR+ Package Guide
@@ -52,7 +51,6 @@
 
 # Deployment
 
-- [Docker](./deployment/docker.md)
 - [Kubernetes](./deployment/kubernetes.md)
 - [Configuration](./deployment/configuration.md)
 - [Monitoring](./deployment/monitoring.md)

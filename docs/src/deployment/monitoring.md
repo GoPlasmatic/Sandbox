@@ -278,4 +278,4 @@ Reframe propagates trace context through headers:
 
 **[Configuration Reference →](./configuration.md)**
 
-**[Docker Deployment →](./docker.md)**
+**[Kubernetes Deployment →](./kubernetes.md)**
