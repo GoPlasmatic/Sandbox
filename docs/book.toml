@@ -1,0 +1,34 @@
+[book]
+title = "Reframe - A Universal Transformation Engine"
+authors = ["Plasmatic"]
+description = "Open source rules engine for universal message transformation. Transform SWIFT MT to ISO 20022 with auditable JSONLogic rules. Free CBPR+ package included."
+language = "en"
+src = "src"
+
+[build]
+build-dir = "book"
+
+[output.html]
+git-repository-url = "https://github.com/GoPlasmatic/Reframe"
+default-theme = "light"
+preferred-dark-theme = "navy"
+edit-url-template = "https://github.com/GoPlasmatic/Sandbox/edit/main/docs/{path}"
+additional-js = ["theme/reframe-playground.js"]
+additional-css = ["theme/reframe-playground.css"]
+site-url = "https://sandbox.goplasmatic.io/"
+cname = ""
+
+[output.html.fold]
+enable = true
+level = 1
+
+[output.html.search]
+enable = true
+limit-results = 30
+teaser-word-count = 30
+copy-js = true
+
+[output.html.playground]
+editable = false
+copyable = true
+copy-js = true

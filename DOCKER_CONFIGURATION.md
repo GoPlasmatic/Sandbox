@@ -1,116 +1,131 @@
 # Docker Configuration Guide
 
-## Setting the API URL
+## Overview
 
-The application uses the `REFRAME_API_URL` environment variable to configure the API endpoint. This must be set at **build time** when creating the Docker image.
+This Docker setup builds and serves the mdbook documentation site using nginx.
 
-### Method 1: Using Docker Compose (Recommended)
+## Quick Start
 
-1. Create a `.env` file in the project root:
+### Using Docker Compose (Recommended)
+
 ```bash
-cp .env.example .env
-```
-
-2. Edit the `.env` file and set your API URL:
-```bash
-REFRAME_API_URL=https://your-api-server.com
-```
-
-3. Build and run with docker-compose:
-```bash
+# Build and run
 docker-compose up --build
+
+# Run in background
+docker-compose up -d --build
 ```
 
-The `--build` flag ensures the image is rebuilt with the new environment variable.
+The documentation will be available at `http://localhost:80`
 
-### Method 2: Using Docker Build Command
-
-If building the image directly with Docker:
+### Using Docker Directly
 
 ```bash
-# Build with custom API URL
-docker build --build-arg REFRAME_API_URL=https://your-api-server.com -t docusaurus-app .
+# Build the image
+docker build -t reframe-docs .
 
 # Run the container
-docker run -p 3000:3000 docusaurus-app
+docker run -p 80:80 reframe-docs
 ```
 
-### Method 3: Using Environment Variable at Build Time
+## Configuration
+
+### Changing the Port
+
+To run on a different port, modify the `docker-compose.yml`:
+
+```yaml
+ports:
+  - "8080:80"  # Maps host port 8080 to container port 80
+```
+
+Or with Docker directly:
 
 ```bash
-# Export the environment variable
-export REFRAME_API_URL=https://your-api-server.com
+docker run -p 8080:80 reframe-docs
+```
 
-# Build with docker-compose (it will use the exported variable)
-docker-compose build
+### API URL Configuration
 
-# Run the container
+The interactive playground widgets connect to the Reframe API. By default, they connect to `http://localhost:3000`.
+
+Users can change this in the browser using the API URL input field in the playground.
+
+To set a different default API URL, edit `docs/theme/reframe-playground.js`:
+
+```javascript
+const DEFAULT_API_URL = 'https://your-api-server.com';
+```
+
+Then rebuild the Docker image.
+
+## Rebuilding
+
+If you make changes to the documentation, rebuild the image:
+
+```bash
+# With docker-compose
+docker-compose down
+docker-compose up --build
+
+# Or force a fresh build
+docker-compose build --no-cache
 docker-compose up
 ```
 
-## Important Notes
+## Health Check
 
-1. **Build-Time Configuration**: The `REFRAME_API_URL` must be set at build time, not runtime. This is because Docusaurus bakes the configuration into the static build.
+The container includes a health check that verifies nginx is serving content:
 
-2. **Rebuilding Required**: If you change the `REFRAME_API_URL`, you must rebuild the Docker image for the changes to take effect:
+```bash
+# Check container health
+docker ps
+# Look for "(healthy)" in the STATUS column
+```
+
+## Production Deployment
+
+For production deployments:
+
+1. Build the image:
    ```bash
-   docker-compose build --no-cache
-   docker-compose up
+   docker build -t reframe-docs:latest .
    ```
 
-3. **Default Value**: If `REFRAME_API_URL` is not set, it defaults to `http://localhost:3000`.
+2. Push to your registry:
+   ```bash
+   docker tag reframe-docs:latest your-registry/reframe-docs:latest
+   docker push your-registry/reframe-docs:latest
+   ```
 
-## Verifying the Configuration
-
-After building and running the container, you can verify the API URL is correctly configured:
-
-1. Open the application in your browser
-2. Open the browser's Developer Tools (F12)
-3. Go to the Network tab
-4. Perform any action that makes an API call
-5. Check that the requests are going to your configured API URL
+3. Deploy on your VM:
+   ```bash
+   docker pull your-registry/reframe-docs:latest
+   docker run -d -p 80:80 --restart unless-stopped your-registry/reframe-docs:latest
+   ```
 
 ## Troubleshooting
 
-### API URL Not Updating
+### Container Not Starting
 
-If the API URL doesn't seem to update after changing the environment variable:
+Check the logs:
+```bash
+docker-compose logs
+# or
+docker logs <container_id>
+```
 
-1. Ensure you're rebuilding the image:
-   ```bash
-   docker-compose down
-   docker-compose build --no-cache
-   docker-compose up
-   ```
+### Build Failures
 
-2. Clear your browser cache and hard reload (Ctrl+Shift+R or Cmd+Shift+R)
+If mdbook installation fails, try building with no cache:
+```bash
+docker-compose build --no-cache
+```
 
-3. Verify the build argument is being passed correctly:
-   ```bash
-   docker-compose config
-   ```
-   This should show the `REFRAME_API_URL` in the build args section.
+### nginx Configuration Issues
 
-### Connection Refused Errors
+The nginx config is embedded in the Dockerfile. To customize it, create a separate `nginx.conf` file and copy it in the Dockerfile:
 
-If you're getting connection refused errors when the Docker container tries to reach the API:
-
-1. If the API is running on your host machine, use your machine's IP address instead of `localhost`:
-   - On Linux/Mac: `REFRAME_API_URL=http://host.docker.internal:3000`
-   - On Windows: `REFRAME_API_URL=http://host.docker.internal:3000`
-
-2. If the API is in another Docker container, ensure they're on the same network:
-   ```yaml
-   # docker-compose.yml
-   services:
-     docusaurus:
-       networks:
-         - app-network
-     api:
-       networks:
-         - app-network
-   
-   networks:
-     app-network:
-       driver: bridge
-   ```
+```dockerfile
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+```

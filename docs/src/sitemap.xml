@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://sandbox.goplasmatic.io/introduction.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Interactive Playground -->
+  <url>
+    <loc>https://sandbox.goplasmatic.io/playground/index.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Why Reframe -->
+  <url>
+    <loc>https://sandbox.goplasmatic.io/why-reframe/open-source-advantage.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/why-reframe/architecture-overview.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/why-reframe/use-cases.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Core Concepts -->
+  <url>
+    <loc>https://sandbox.goplasmatic.io/concepts/transformation-engine.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/concepts/packages-and-rules.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/concepts/jsonlogic-rules.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/concepts/workflow-orchestration.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Getting Started -->
+  <url>
+    <loc>https://sandbox.goplasmatic.io/getting-started/quick-start.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/getting-started/docker-setup.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/getting-started/first-transformation.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- CBPR+ Package Guide -->
+  <url>
+    <loc>https://sandbox.goplasmatic.io/cbpr-plus/overview.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/cbpr-plus/message-catalog.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/cbpr-plus/mt-to-iso20022/overview.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/cbpr-plus/mt-to-iso20022/mt103-to-pacs008.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/cbpr-plus/iso20022-to-mt/overview.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/cbpr-plus/sr2025-compliance.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Features -->
+  <url>
+    <loc>https://sandbox.goplasmatic.io/features/sample-generation.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/features/validation.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/features/hot-reload.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/features/custom-fields.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- API Reference -->
+  <url>
+    <loc>https://sandbox.goplasmatic.io/api-reference/overview.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/api-reference/transform-api.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/api-reference/validate-api.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/api-reference/generate-api.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/api-reference/admin-api.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/api-reference/graphql-api.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Deployment -->
+  <url>
+    <loc>https://sandbox.goplasmatic.io/deployment/docker.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/deployment/kubernetes.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/deployment/configuration.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/deployment/monitoring.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Technology -->
+  <url>
+    <loc>https://sandbox.goplasmatic.io/technology/overview.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/technology/datalogic.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/technology/dataflow.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/technology/datafake.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Reference -->
+  <url>
+    <loc>https://sandbox.goplasmatic.io/reference/message-types.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/reference/error-codes.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://sandbox.goplasmatic.io/reference/glossary.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- FAQ -->
+  <url>
+    <loc>https://sandbox.goplasmatic.io/faq.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>

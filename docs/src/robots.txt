@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://sandbox.goplasmatic.io/sitemap.xml
+
+# Crawl-delay (optional, be nice to search engines)
+Crawl-delay: 1

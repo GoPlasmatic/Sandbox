@@ -1,0 +1,446 @@
+{
+  "transformationTypes": [
+    {
+      "value": "forward",
+      "label": "Forward (MT to MX)",
+      "description": "Swift MT to ISO 20022 MX transformations"
+    },
+    {
+      "value": "reverse",
+      "label": "Reverse (MX to MT)",
+      "description": "ISO 20022 MX to Swift MT transformations"
+    }
+  ],
+  "scenariosByType": {
+    "forward": [
+      {
+        "value": "single_payment",
+        "label": "MT101: Single Payment Initiation (CBPR+ Compliant)",
+        "source": "MT101",
+        "target": "pain.001",
+        "variant": "CBPR+_SINGLE",
+        "file": "outgoing/mt101_to_pain001_cbpr_single.json"
+      },
+      {
+        "value": "standard",
+        "label": "MT103: Standard Cross-Border Payment",
+        "source": "MT103",
+        "target": "pacs.008",
+        "variant": "CBPR+",
+        "file": "outgoing/mt103_to_pacs008_cbpr_standard.json"
+      },
+      {
+        "value": "high_value",
+        "label": "MT103: High Value Payment with Priority",
+        "source": "MT103",
+        "target": "pacs.008",
+        "variant": "CBPR+_HIGH_VALUE",
+        "file": "outgoing/mt103_to_pacs008_cbpr_high_value.json"
+      },
+      {
+        "value": "remittance",
+        "label": "MT103: Remittance with Enhanced Information",
+        "source": "MT103",
+        "target": "pacs.008",
+        "variant": "CBPR+_REMITTANCE",
+        "file": "outgoing/mt103_to_pacs008_cbpr_remittance.json"
+      },
+      {
+        "value": "rejection",
+        "label": "MT103: Payment Rejection Status Report",
+        "source": "MT103",
+        "target": "pacs.002",
+        "variant": "CBPR+_REJECTION",
+        "file": "outgoing/mt103rejt_to_pacs002_cbpr.json"
+      },
+      {
+        "value": "return",
+        "label": "MT103: Payment Return",
+        "source": "MT103",
+        "target": "pacs.004",
+        "variant": "CBPR+_RETURN",
+        "file": "outgoing/mt103retn_to_pacs004_cbpr.json"
+      },
+      {
+        "value": "cancellation_request",
+        "label": "MT192: Customer Payment Cancellation Request",
+        "source": "MT192",
+        "target": "camt.056",
+        "variant": "CBPR+_CUSTOMER_CANCEL",
+        "file": "outgoing/mt192_to_camt056_cbpr_cancellation.json"
+      },
+      {
+        "value": "investigation_resolution",
+        "label": "MT196: Customer Investigation Resolution",
+        "source": "MT196",
+        "target": "camt.029",
+        "variant": "CBPR+_CUSTOMER_RESOLUTION",
+        "file": "outgoing/mt196_to_camt029_cbpr_customer_resolution.json"
+      },
+      {
+        "value": "own_account",
+        "label": "MT200: Financial Institution Transfer for its Own Account",
+        "source": "MT200",
+        "target": "pacs.009",
+        "variant": "CBPR+_OWN_ACCOUNT",
+        "file": "outgoing/mt200_to_pacs009_cbpr_own_account.json"
+      },
+      {
+        "value": "core",
+        "label": "MT202: Core Financial Institution Transfer",
+        "source": "MT202",
+        "target": "pacs.009",
+        "variant": "CBPR+_CORE",
+        "file": "outgoing/mt202_to_pacs009_cbpr_core.json"
+      },
+      {
+        "value": "cover",
+        "label": "MT202: Cover Payment",
+        "source": "MT202",
+        "target": "pacs.009",
+        "variant": "CBPR+_COVE",
+        "file": "outgoing/mt202cov_to_pacs009_cbpr_cover.json"
+      },
+      {
+        "value": "fi_rejection",
+        "label": "MT202: FI Transfer Rejection",
+        "source": "MT202",
+        "target": "pacs.002",
+        "variant": "CBPR+_FI_REJECTION",
+        "file": "outgoing/mt202rejt_to_pacs002_cbpr.json"
+      },
+      {
+        "value": "fi_return",
+        "label": "MT202: FI Transfer Return",
+        "source": "MT202",
+        "target": "pacs.004",
+        "variant": "CBPR+_FI_RETURN",
+        "file": "outgoing/mt202retn_to_pacs004_cbpr.json"
+      },
+      {
+        "value": "serial",
+        "label": "MT205: Serial Financial Institution Transfer",
+        "source": "MT205",
+        "target": "pacs.009",
+        "variant": "CBPR+_SERIAL",
+        "file": "outgoing/mt205_to_pacs009_cbpr_serial.json"
+      },
+      {
+        "value": "serial_cover",
+        "label": "MT205: Serial Cover Payment",
+        "source": "MT205",
+        "target": "pacs.009",
+        "variant": "CBPR+_SERIAL_COVE",
+        "file": "outgoing/mt205cov_to_pacs009_cbpr_serial_cover.json"
+      },
+      {
+        "value": "serial_rejection",
+        "label": "MT205: Serial FI Transfer Rejection",
+        "source": "MT205",
+        "target": "pacs.002",
+        "variant": "CBPR+_SERIAL_REJECTION",
+        "file": "outgoing/mt205rejt_to_pacs002_cbpr.json"
+      },
+      {
+        "value": "serial_return",
+        "label": "MT205: Serial FI Transfer Return",
+        "source": "MT205",
+        "target": "pacs.004",
+        "variant": "CBPR+_SERIAL_RETURN",
+        "file": "outgoing/mt205retn_to_pacs004_cbpr.json"
+      },
+      {
+        "value": "fi_cancellation",
+        "label": "MT292: FI Payment Cancellation Request",
+        "source": "MT292",
+        "target": "camt.056",
+        "variant": "CBPR+_FI_CANCEL",
+        "file": "outgoing/mt292_to_camt056_cbpr_fi_cancellation.json"
+      },
+      {
+        "value": "fi_resolution",
+        "label": "MT296: FI Investigation Resolution",
+        "source": "MT296",
+        "target": "camt.029",
+        "variant": "CBPR+_FI_RESOLUTION",
+        "file": "outgoing/mt296_to_camt029_cbpr_fi_resolution.json"
+      },
+      {
+        "value": "debit",
+        "label": "MT900: Confirmation of Debit",
+        "source": "MT900",
+        "target": "camt.054",
+        "variant": "CBPR+_DEBIT",
+        "file": "outgoing/mt900_to_camt054_cbpr_debit.json"
+      },
+      {
+        "value": "credit",
+        "label": "MT910: Confirmation of Credit",
+        "source": "MT910",
+        "target": "camt.054",
+        "variant": "CBPR+_CREDIT",
+        "file": "outgoing/mt910_to_camt054_cbpr_credit.json"
+      }
+    ],
+    "reverse": [
+      {
+        "value": "rejection",
+        "label": "pacs.002: Payment Status Report Rejection",
+        "source": "pacs.002",
+        "target": "MT103REJT",
+        "variant": "CBPR+_REJECTION",
+        "file": "incoming/pacs002_to_mt103rejt_cbpr.json"
+      },
+      {
+        "value": "customer_return",
+        "label": "pacs.004: Payment Return",
+        "source": "pacs.004",
+        "target": "MT103RETN",
+        "variant": "CBPR+_RETURN",
+        "file": "incoming/pacs004_to_mt103retn_cbpr.json"
+      },
+      {
+        "value": "fi_return",
+        "label": "pacs.004: FI Payment Return",
+        "source": "pacs.004",
+        "target": "MT202RETN",
+        "variant": "CBPR+_FI_RETURN",
+        "file": "incoming/pacs004_to_mt202retn_cbpr.json"
+      },
+      {
+        "value": "serial_return",
+        "label": "pacs.004: Serial FI Payment Return",
+        "source": "pacs.004",
+        "target": "MT205RETN",
+        "variant": "CBPR+_SERIAL_FI_RETURN",
+        "file": "incoming/pacs004_to_mt205retn_cbpr.json"
+      },
+      {
+        "value": "standard",
+        "label": "pacs.008: Standard Customer Credit Transfer",
+        "source": "pacs.008",
+        "target": "MT103",
+        "variant": "CBPR+_STANDARD",
+        "file": "incoming/pacs008_to_mt103_cbpr_standard.json"
+      },
+      {
+        "value": "stp",
+        "label": "pacs.008: STP Compliant Transfer",
+        "source": "pacs.008",
+        "target": "MT103",
+        "variant": "CBPR+_STP",
+        "file": "incoming/pacs008_to_mt103_cbpr_stp.json"
+      },
+      {
+        "value": "core",
+        "label": "pacs.009: Financial Institution Transfer",
+        "source": "pacs.009",
+        "target": "MT202",
+        "variant": "CBPR+_CORE",
+        "file": "incoming/pacs009_to_mt202_cbpr_core.json"
+      },
+      {
+        "value": "cover",
+        "label": "pacs.009: Cover Payment",
+        "source": "pacs.009",
+        "target": "MT202COV",
+        "variant": "CBPR+_COVE",
+        "file": "incoming/pacs009_to_mt202cov_cbpr_cover.json"
+      },
+      {
+        "value": "advice",
+        "label": "pacs.009: Advice Variant",
+        "source": "pacs.009",
+        "target": "MT202",
+        "variant": "CBPR+_ADV",
+        "file": "incoming/pacs009_to_mt202adv_cbpr.json"
+      },
+      {
+        "value": "serial",
+        "label": "pacs.009: Serial FI Transfer",
+        "source": "pacs.009",
+        "target": "MT205",
+        "variant": "CBPR+_SERIAL",
+        "file": "incoming/pacs009_to_mt205_cbpr_serial.json"
+      },
+      {
+        "value": "serial_cover",
+        "label": "pacs.009: Serial Cover Payment",
+        "source": "pacs.009",
+        "target": "MT205COV",
+        "variant": "CBPR+_SERIAL_COVE",
+        "file": "incoming/pacs009_to_mt205cov_cbpr_serial_cover.json"
+      },
+      {
+        "value": "interim_report",
+        "label": "camt.052: Interim Transaction Report",
+        "source": "camt.052",
+        "target": "MT942",
+        "variant": "CBPR+_INTERIM",
+        "file": "incoming/camt052_to_mt942_cbpr.json"
+      },
+      {
+        "value": "statement",
+        "label": "camt.053: Bank to Customer Statement",
+        "source": "camt.053",
+        "target": "MT940",
+        "variant": "CBPR+_STATEMENT",
+        "file": "incoming/camt053_to_mt940_cbpr.json"
+      },
+      {
+        "value": "cheque_collection",
+        "label": "camt.107: Advice of Cheque Collection",
+        "source": "camt.107",
+        "target": "MT110",
+        "variant": "CBPR+_CHEQUE",
+        "file": "incoming/camt107_to_mt110_cbpr.json"
+      },
+      {
+        "value": "margin_collection",
+        "label": "pacs.010: Margin Collection Direct Debit",
+        "source": "pacs.010",
+        "target": "MT204",
+        "variant": "CBPR+_MC",
+        "file": "incoming/pacs010_to_mt204_cbpr_mc.json"
+      },
+      {
+        "value": "stop_cheque",
+        "label": "camt.108: Stop of Cheque",
+        "source": "camt.108",
+        "target": "MT111",
+        "variant": "CBPR+_STOP_CHEQUE",
+        "file": "incoming/camt108_to_mt111_cbpr.json"
+      },
+      {
+        "value": "stop_cheque_status",
+        "label": "camt.109: Status of Request for Stop of Cheque",
+        "source": "camt.109",
+        "target": "MT112",
+        "variant": "CBPR+_STOP_STATUS",
+        "file": "incoming/camt109_to_mt112_cbpr.json"
+      },
+      {
+        "value": "system_notification",
+        "label": "admi.024: System Event Notification",
+        "source": "admi.024",
+        "target": "MT199",
+        "variant": "CBPR+_NOTIFICATION",
+        "file": "incoming/admi024_to_mt199_cbpr.json"
+      },
+      {
+        "value": "cancellation_response_customer",
+        "label": "camt.029: Customer Payment Cancellation Response",
+        "source": "camt.029",
+        "target": "MT196",
+        "variant": "CBPR+_CANCELLATION_RESPONSE",
+        "file": "incoming/camt029_to_mt196_cbpr.json"
+      },
+      {
+        "value": "cancellation_response_fi",
+        "label": "camt.029: FI Payment Cancellation Response",
+        "source": "camt.029",
+        "target": "MT296",
+        "variant": "CBPR+_CANCELLATION_REJECTION",
+        "file": "incoming/camt029_to_mt296_cbpr.json"
+      },
+      {
+        "value": "customer_notification",
+        "label": "camt.054: Customer Credit Notification",
+        "source": "camt.054",
+        "target": "MT103",
+        "variant": "CBPR+_CUSTOMER_NOTIFICATION",
+        "file": "incoming/camt054_to_mt103_cbpr.json"
+      },
+      {
+        "value": "debit_confirmation",
+        "label": "camt.054: Confirmation of Debit",
+        "source": "camt.054",
+        "target": "MT900",
+        "variant": "CBPR+_DEBIT_CONFIRMATION",
+        "file": "incoming/camt054_to_mt900_cbpr.json"
+      },
+      {
+        "value": "credit_confirmation",
+        "label": "camt.054: Confirmation of Credit",
+        "source": "camt.054",
+        "target": "MT910",
+        "variant": "CBPR+_CREDIT_CONFIRMATION",
+        "file": "incoming/camt054_to_mt910_cbpr.json"
+      },
+      {
+        "value": "bank_notification",
+        "label": "camt.054: Bank-to-Bank Notification",
+        "source": "camt.054",
+        "target": "MT202",
+        "variant": "CBPR+_BANK_NOTIFICATION",
+        "file": "incoming/camt054_to_mt202_cbpr.json"
+      },
+      {
+        "value": "cancellation_request",
+        "label": "camt.056: Payment Cancellation Request",
+        "source": "camt.056",
+        "target": "MT192",
+        "variant": "CBPR+_CANCELLATION",
+        "file": "incoming/camt056_to_mt192_cbpr.json"
+      },
+      {
+        "value": "notification_to_receive",
+        "label": "camt.057: Notification To Receive",
+        "source": "camt.057",
+        "target": "MT210",
+        "variant": "CBPR+_NOTIFICATION_TO_RECEIVE",
+        "file": "incoming/camt057_to_mt210_cbpr.json"
+      },
+      {
+        "value": "cancellation_advice",
+        "label": "camt.058: Notification to Receive Cancellation Advice",
+        "source": "camt.058",
+        "target": "MT292",
+        "variant": "CBPR+_CANCELLATION_REQUEST",
+        "file": "incoming/camt058_to_mt292_cbpr.json"
+      },
+      {
+        "value": "charges_payment_notification",
+        "label": "camt.105: Charges Payment Notification",
+        "source": "camt.105",
+        "target": "MTn90",
+        "variant": "",
+        "file": "incoming/camt105_to_mtn90_cbpr.json"
+      },
+      {
+        "value": "customer_charges_request",
+        "label": "camt.106: Request for Payment of Charges (Customer)",
+        "source": "camt.106",
+        "target": "MT191",
+        "variant": "",
+        "file": "incoming/camt106_to_mt191_cbpr.json"
+      },
+      {
+        "value": "fi_charges_request",
+        "label": "camt.106: Request for Payment of Charges (FI)",
+        "source": "camt.106",
+        "target": "MT291",
+        "variant": "",
+        "file": "incoming/camt106_to_mt291_cbpr.json"
+      },
+      {
+        "value": "direct_debit",
+        "label": "pacs.003: Direct Debit Transaction",
+        "source": "pacs.003",
+        "target": "MT104",
+        "variant": "CBPR+_DIRECT_DEBIT",
+        "file": "incoming/pacs003_to_mt104_cbpr.json"
+      },
+      {
+        "value": "payment_initiation",
+        "label": "pain.001: Customer Credit Transfer Initiation",
+        "source": "pain.001",
+        "target": "MT101",
+        "variant": "CBPR+_PAYMENT_INITIATION",
+        "file": "incoming/pain001_to_mt101_cbpr.json"
+      }
+    ]
+  },
+  "totalTypes": 2,
+  "totalScenarios": 53
+}

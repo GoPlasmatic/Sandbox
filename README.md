@@ -1,24 +1,37 @@
 # Sandbox
 
+Reframe API documentation and interactive playground built with mdbook.
+
 ## Quick Start
 
 ### Using Docker
 
-1. Set your API URL in a `.env` file:
-```bash
-cp .env.example .env
-# Edit .env and set REFRAME_API_URL to your API server
-```
-
-2. Build and run with Docker Compose:
+Build and run with Docker Compose:
 ```bash
 docker-compose up --build
 ```
 
-The application will be available at http://localhost:3000
+The documentation will be available at http://localhost:80
 
 For detailed Docker configuration instructions, see [DOCKER_CONFIGURATION.md](./DOCKER_CONFIGURATION.md)
 
 ### Local Development
 
-See the [website README](./website/README.md) for local development instructions.
+1. Install mdbook (if not installed):
+```bash
+cargo install mdbook
+```
+
+2. Start development server:
+```bash
+cd docs
+mdbook serve
+```
+
+The documentation will be available at http://localhost:3000
+
+3. Build for production:
+```bash
+cd docs
+mdbook build
+```

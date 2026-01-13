@@ -4,68 +4,74 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a Sandbox repository with a Docusaurus-based documentation website. Licensed under Apache License 2.0.
+This is a Sandbox repository with an mdbook-based documentation website for the Reframe API. Licensed under Apache License 2.0.
 
 ## Project Structure
 
 ```
 /
-├── website/              # Docusaurus documentation site
-│   ├── blog/            # Blog posts
-│   ├── docs/            # Documentation pages
-│   ├── src/             # React components and custom pages
-│   ├── static/          # Static assets
-│   └── docusaurus.config.ts  # Site configuration
+├── docs/                 # mdbook documentation site
+│   ├── book.toml        # mdbook configuration
+│   ├── src/             # Documentation source files
+│   │   ├── SUMMARY.md   # Navigation structure
+│   │   ├── introduction.md
+│   │   ├── playground.md
+│   │   ├── getting-started/
+│   │   ├── sample-generation/
+│   │   ├── validation/
+│   │   ├── transformation/
+│   │   ├── reference/
+│   │   ├── img/         # Logo and images
+│   │   └── data/        # Scenario data (JSON)
+│   └── theme/           # Custom JS/CSS
+│       ├── reframe-playground.js
+│       └── reframe-playground.css
 └── CLAUDE.md            # This file
 ```
 
 ## Common Development Commands
 
-### Docusaurus Website (from `/website` directory)
+### mdbook Documentation (from `/docs` directory)
 
 ```bash
-# Install dependencies
-npm install
+# Install mdbook (if not installed)
+cargo install mdbook
 
 # Start development server (http://localhost:3000)
-npm start
+mdbook serve
 
 # Build for production
-npm run build
+mdbook build
 
-# Serve production build locally
-npm run serve
-
-# Clear cache
-npm run clear
-
-# Deploy to GitHub Pages
-npm run deploy
-
-# Type checking
-npm run typecheck
-
-# Create a new documentation version
-npm run docusaurus docs:version VERSION_NUMBER
+# Clean build output
+rm -rf book/
 ```
 
 ## Development Workflow
 
-1. Navigate to the website directory: `cd website`
-2. Install dependencies if needed: `npm install`
-3. Start development server: `npm start`
-4. Make changes and preview at http://localhost:3000
-5. Build before deploying: `npm run build`
+1. Navigate to the docs directory: `cd docs`
+2. Start development server: `mdbook serve`
+3. Make changes and preview at http://localhost:3000
+4. Build before deploying: `mdbook build`
 
 ## Documentation Guidelines
 
-- Documentation files are in Markdown format in `website/docs/`
-- Blog posts go in `website/blog/` with naming format: `YYYY-MM-DD-slug.md`
-- Use MDX for interactive components
-- Follow existing frontmatter structure for consistency
+- Documentation files are in Markdown format in `docs/src/`
+- Navigation is defined in `docs/src/SUMMARY.md`
+- Interactive API widgets use `<div class="reframe-widget" data-type="..." data-format="..."></div>`
+- Custom styling and JS in `docs/theme/`
 
 ## Git Workflow
 
 - Main branch: `main`
 - Repository uses standard git workflow
 - Apache 2.0 license applies to all contributions
+
+## Deployment
+
+Documentation is deployed via Docker on VM. Build the static site with:
+```bash
+cd docs
+mdbook build
+# Output is in docs/book/
+```
