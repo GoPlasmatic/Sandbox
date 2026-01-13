@@ -6,7 +6,7 @@ How Reframe achieves high-performance, transparent message transformation.
 
 Reframe is a **universal message transformation engine** - not tied to any specific standard. The engine loads transformation packages that define the rules for converting between formats.
 
-**Key insight**: Reframe itself knows nothing about SWIFT, ISO 20022, or CBPR+. All that knowledge lives in packages.
+**Key insight**: Reframe is completely format-agnostic - all SWIFT, ISO 20022, and CBPR+ knowledge lives in loadable packages.
 
 ## Design Principles
 
